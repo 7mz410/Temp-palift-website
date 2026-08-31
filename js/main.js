@@ -5,13 +5,14 @@ const T = {
     badge: "Authorised sales, parts & service",
     heroTitle: "Forklifts, parts and service across Palestine.",
     heroSub: "New and used material handling equipment, genuine spare parts, and field service teams covering Ramallah, Nablus, Hebron and Gaza.",
-    browseStock: "Browse stock", bookService: "Book a service", heroAlt: "NobleLift equipment",
+    browseStock: "Browse stock", bookService: "Book a service", heroAlt: "Palift equipment",
+    gallery: ["Electric stacker photo", "Diesel forklift photo", "Reach truck photo"],
     findMachine: "Find your machine", stockCount: "142 machines in stock", search: "Search",
     kickerStock: "Current stock", featuredTitle: "Featured machines", viewAll: "View all stock", arrowIcon: "arrow_forward",
     priceFrom: "From", enquire: "Enquire", photoSoon: "Photo coming soon",
     kickerCats: "Categories", catsTitle: "Browse by equipment type",
     kickerService: "Aftersales", serviceTitle: "Service that keeps the fleet moving",
-    serviceBody: "Palift runs its own workshops and mobile service units. Every machine we sell is registered by serial number, so warranty, job cards and parts history stay in one record for its whole life.",
+    serviceBody: "Palift runs its own workshops and mobile service units. Every machine we sell is registered by VIN, so warranty, job cards and parts history stay in one record for its whole life.",
     kickerTeam: "Our team", teamTitle: "Talk to a specialist",
     contactTitle: "Tell us what you need to lift.", contactBody: "Send the load, height and site conditions and we will come back with two or three machines that fit, with pricing and lead time.",
     formTitle: "Request a quote", sendRequest: "Send request",
@@ -20,18 +21,18 @@ const T = {
     copyright: "© 2026 Palift Equipment. All rights reserved.", vatLine: "VAT reg. 562841903 · Ramallah, Palestine",
     filters: [["Equipment type", "All types"], ["Brand", "All brands"], ["Capacity", "Any capacity"], ["Fuel", "Any fuel"]],
     machines: [
-      { brand: "NobleLift", model: "Avant Electric Pallet Truck", tag: "New", tagBg: "#921A1D", price: "₪38,500", img: "images/pallet-truck.webp",
-        specs: [["fitness_center", "1.5 t"], ["bolt", "Electric"], ["battery_charging_full", "Li-ion"], ["speed", "Pedestrian"]] },
-      { brand: "NobleLift", model: "30 Series Forklift", tag: "New", tagBg: "#921A1D", price: "₪182,000", img: "images/forklift.webp",
-        specs: [["fitness_center", "3.0 t"], ["local_gas_station", "Diesel/LPG"], ["height", "Duplex/Triplex mast"], ["chair", "Full cabin"]] },
-      { brand: "NobleLift", model: "Li-Ion Reach Stacker", tag: "New", tagBg: "#921A1D", price: "₪96,400", img: "images/stacker.webp",
-        specs: [["fitness_center", "1.0–1.5 t"], ["bolt", "Electric"], ["battery_charging_full", "Li-ion"], ["height", "Elevating mast"]] },
       { brand: "Toyota", model: "8FD30 Diesel", tag: "Used · 2021", tagBg: "#252523", price: "₪118,000", img: null,
         specs: [["fitness_center", "3.0 t"], ["height", "4,700 mm"], ["local_gas_station", "Diesel"], ["schedule", "3,240 h"]] },
+      { brand: "Linde", model: "E20 PH Electric", tag: "New", tagBg: "#921A1D", price: "₪204,500", img: null,
+        specs: [["fitness_center", "2.0 t"], ["height", "5,200 mm"], ["bolt", "Electric"], ["battery_full", "80 V"]] },
+      { brand: "Hyster", model: "H2.5FT LPG", tag: "Used · 2019", tagBg: "#252523", price: "₪86,400", img: null,
+        specs: [["fitness_center", "2.5 t"], ["height", "3,300 mm"], ["propane", "LPG"], ["schedule", "6,110 h"]] },
       { brand: "Jungheinrich", model: "ETV 216 Reach", tag: "Used · 2022", tagBg: "#252523", price: "₪147,900", img: null,
         specs: [["fitness_center", "1.6 t"], ["height", "8,400 mm"], ["bolt", "Electric"], ["schedule", "1,860 h"]] },
       { brand: "Manitou", model: "MT 1440 Telehandler", tag: "New", tagBg: "#921A1D", price: "₪392,000", img: null,
-        specs: [["fitness_center", "4.0 t"], ["height", "13,500 mm"], ["local_gas_station", "Diesel"], ["terrain", "4x4"]] }
+        specs: [["fitness_center", "4.0 t"], ["height", "13,500 mm"], ["local_gas_station", "Diesel"], ["terrain", "4x4"]] },
+      { brand: "Still", model: "EXU 20 Stacker", tag: "Used · 2023", tagBg: "#1f8a4d", price: "₪41,200", img: null,
+        specs: [["fitness_center", "2.0 t"], ["height", "2,900 mm"], ["bolt", "Electric"], ["schedule", "640 h"]] }
     ],
     categories: [["forklift", "Diesel forklifts", "38 machines"], ["bolt", "Electric forklifts", "44 machines"], ["conveyor_belt", "Reach trucks", "17 machines"], ["pallet", "Pallet stackers", "23 machines"], ["agriculture", "Telehandlers", "9 machines"], ["build", "Attachments & parts", "1,400+ items"]],
     services: [
@@ -53,13 +54,14 @@ const T = {
     badge: "وكيل معتمد للبيع وقطع الغيار والصيانة",
     heroTitle: "رافعات شوكية وقطع غيار وصيانة في كل فلسطين.",
     heroSub: "معدات مناولة جديدة ومستعملة، قطع غيار أصلية، وفرق صيانة ميدانية تغطي رام الله ونابلس والخليل وغزة.",
-    browseStock: "تصفّح المخزون", bookService: "احجز صيانة", heroAlt: "معدات نوبل ليفت",
+    browseStock: "تصفّح المخزون", bookService: "احجز صيانة", heroAlt: "معدات بالِفت",
+    gallery: ["صورة ستاكر كهربائي", "صورة رافعة ديزل", "صورة رافعة ريتش"],
     findMachine: "ابحث عن آلتك", stockCount: "١٤٢ آلة في المخزون", search: "بحث",
     kickerStock: "المخزون الحالي", featuredTitle: "آلات مختارة", viewAll: "كل المخزون", arrowIcon: "arrow_back",
     priceFrom: "يبدأ من", enquire: "استفسار", photoSoon: "الصورة قريباً",
     kickerCats: "الأقسام", catsTitle: "تصفّح حسب نوع المعدة",
     kickerService: "خدمات ما بعد البيع", serviceTitle: "صيانة تحافظ على حركة الأسطول",
-    serviceBody: "تدير بالِفت ورشها الخاصة ووحدات صيانة متنقلة. كل آلة نبيعها تُسجّل برقم تسلسلي، ليبقى الضمان وبطاقات العمل وسجل القطع في ملف واحد طوال عمرها.",
+    serviceBody: "تدير بالِفت ورشها الخاصة ووحدات صيانة متنقلة. كل آلة نبيعها تُسجّل برقم الهيكل، ليبقى الضمان وبطاقات العمل وسجل القطع في ملف واحد طوال عمرها.",
     kickerTeam: "فريقنا", teamTitle: "تحدّث إلى مختص",
     contactTitle: "أخبرنا ما تحتاج رفعه.", contactBody: "أرسل الحمولة والارتفاع وظروف الموقع وسنعود إليك باثنتين أو ثلاث آلات مناسبة مع السعر ومدة التوريد.",
     formTitle: "طلب عرض سعر", sendRequest: "إرسال الطلب",
@@ -68,18 +70,18 @@ const T = {
     copyright: "© ٢٠٢٦ بالِفت للمعدات. جميع الحقوق محفوظة.", vatLine: "رقم ضريبي ٥٦٢٨٤١٩٠٣ · رام الله، فلسطين",
     filters: [["نوع المعدة", "كل الأنواع"], ["الماركة", "كل الماركات"], ["الحمولة", "أي حمولة"], ["الوقود", "أي نوع"]],
     machines: [
-      { brand: "نوبل ليفت", model: "Avant عربة نقل كهربائية", tag: "جديدة", tagBg: "#921A1D", price: "₪٣٨,٥٠٠", img: "images/pallet-truck.webp",
-        specs: [["fitness_center", "١.٥ طن"], ["bolt", "كهربائية"], ["battery_charging_full", "ليثيوم"], ["speed", "سائق راجل"]] },
-      { brand: "نوبل ليفت", model: "رافعة سلسلة 30", tag: "جديدة", tagBg: "#921A1D", price: "₪١٨٢,٠٠٠", img: "images/forklift.webp",
-        specs: [["fitness_center", "٣.٠ طن"], ["local_gas_station", "ديزل/غاز"], ["height", "صاري مزدوج/ثلاثي"], ["chair", "كابينة كاملة"]] },
-      { brand: "نوبل ليفت", model: "ستاكر ليثيوم", tag: "جديدة", tagBg: "#921A1D", price: "₪٩٦,٤٠٠", img: "images/stacker.webp",
-        specs: [["fitness_center", "١.٠–١.٥ طن"], ["bolt", "كهربائية"], ["battery_charging_full", "ليثيوم"], ["height", "صاري رافع"]] },
       { brand: "تويوتا", model: "8FD30 ديزل", tag: "مستعملة · ٢٠٢١", tagBg: "#252523", price: "₪١١٨,٠٠٠", img: null,
         specs: [["fitness_center", "٣.٠ طن"], ["height", "٤,٧٠٠ مم"], ["local_gas_station", "ديزل"], ["schedule", "٣,٢٤٠ ساعة"]] },
+      { brand: "ليندي", model: "E20 PH كهربائية", tag: "جديدة", tagBg: "#921A1D", price: "₪٢٠٤,٥٠٠", img: null,
+        specs: [["fitness_center", "٢.٠ طن"], ["height", "٥,٢٠٠ مم"], ["bolt", "كهربائية"], ["battery_full", "٨٠ فولت"]] },
+      { brand: "هايستر", model: "H2.5FT غاز", tag: "مستعملة · ٢٠١٩", tagBg: "#252523", price: "₪٨٦,٤٠٠", img: null,
+        specs: [["fitness_center", "٢.٥ طن"], ["height", "٣,٣٠٠ مم"], ["propane", "غاز"], ["schedule", "٦,١١٠ ساعة"]] },
       { brand: "يونجهاينريش", model: "ETV 216 ريتش", tag: "مستعملة · ٢٠٢٢", tagBg: "#252523", price: "₪١٤٧,٩٠٠", img: null,
         specs: [["fitness_center", "١.٦ طن"], ["height", "٨,٤٠٠ مم"], ["bolt", "كهربائية"], ["schedule", "١,٨٦٠ ساعة"]] },
       { brand: "مانيتو", model: "MT 1440 تيليهاندلر", tag: "جديدة", tagBg: "#921A1D", price: "₪٣٩٢,٠٠٠", img: null,
-        specs: [["fitness_center", "٤.٠ طن"], ["height", "١٣,٥٠٠ مم"], ["local_gas_station", "ديزل"], ["terrain", "4x4"]] }
+        specs: [["fitness_center", "٤.٠ طن"], ["height", "١٣,٥٠٠ مم"], ["local_gas_station", "ديزل"], ["terrain", "4x4"]] },
+      { brand: "ستيل", model: "EXU 20 ستاكر", tag: "مستعملة · ٢٠٢٣", tagBg: "#1f8a4d", price: "₪٤١,٢٠٠", img: null,
+        specs: [["fitness_center", "٢.٠ طن"], ["height", "٢,٩٠٠ مم"], ["bolt", "كهربائية"], ["schedule", "٦٤٠ ساعة"]] }
     ],
     categories: [["forklift", "رافعات ديزل", "٣٨ آلة"], ["bolt", "رافعات كهربائية", "٤٤ آلة"], ["conveyor_belt", "رافعات ريتش", "١٧ آلة"], ["pallet", "ستاكر بالتات", "٢٣ آلة"], ["agriculture", "تيليهاندلر", "٩ آلات"], ["build", "ملحقات وقطع غيار", "+١,٤٠٠ صنف"]],
     services: [
@@ -246,23 +248,28 @@ function renderFooter(t) {
   });
 }
 
-const heroGallery = ["images/forklift.webp", "images/stacker.webp", "images/pallet-truck.webp"];
+const heroGallerySrc = ["images/stacker.webp", "images/forklift.webp", "images/pallet-truck.webp"];
 let heroIndex = 0;
 let heroTimer = null;
 
-function renderHeroDots() {
-  const wrap = document.getElementById("heroDots");
-  wrap.innerHTML = "";
-  heroGallery.forEach((_, i) => {
-    const dot = el("button", { class: i === heroIndex ? "active" : "" });
+function renderHeroGallery(t) {
+  const gallery = document.getElementById("heroGallery");
+  const dots = document.getElementById("heroDots");
+  gallery.innerHTML = "";
+  dots.innerHTML = "";
+  heroGallerySrc.forEach((src, i) => {
+    gallery.appendChild(el("img", {
+      src, alt: t.gallery[i], class: i === heroIndex ? "active" : ""
+    }));
+    const dot = el("button", { class: i === heroIndex ? "active" : "", "aria-label": t.gallery[i] });
     dot.addEventListener("click", () => setHeroImage(i, true));
-    wrap.appendChild(dot);
+    dots.appendChild(dot);
   });
 }
 
 function setHeroImage(i, userTriggered) {
   heroIndex = i;
-  document.getElementById("heroImg").src = heroGallery[heroIndex];
+  document.querySelectorAll("#heroGallery img").forEach((img, idx) => img.classList.toggle("active", idx === heroIndex));
   document.querySelectorAll("#heroDots button").forEach((d, idx) => d.classList.toggle("active", idx === heroIndex));
   if (userTriggered) {
     clearInterval(heroTimer);
@@ -271,9 +278,10 @@ function setHeroImage(i, userTriggered) {
 }
 
 function startHeroRotation() {
+  clearInterval(heroTimer);
   heroTimer = setInterval(() => {
-    setHeroImage((heroIndex + 1) % heroGallery.length, false);
-  }, 4000);
+    setHeroImage((heroIndex + 1) % heroGallerySrc.length, false);
+  }, 4500);
 }
 
 function applyLang() {
@@ -283,10 +291,10 @@ function applyLang() {
   document.querySelectorAll("[data-t]").forEach(node => {
     node.textContent = t[node.getAttribute("data-t")];
   });
-  document.getElementById("heroImg").alt = t.heroAlt;
   document.getElementById("stockCount").textContent = t.stockCount;
   document.getElementById("langLabel").textContent = t.langSwitch;
   document.getElementById("viewAllArrow").textContent = t.arrowIcon;
+  renderHeroGallery(t);
   renderNav(t);
   renderFilters(t);
   renderMachines(t);
@@ -306,5 +314,4 @@ document.getElementById("langToggle").addEventListener("click", () => {
 });
 
 applyLang();
-renderHeroDots();
 startHeroRotation();

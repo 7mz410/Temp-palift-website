@@ -31,36 +31,36 @@
   </header>
 
   <section id="stock">
-    <img class="hero-pattern hero-pattern-gray" src="images/pattern-gray.png" alt="">
+    <img class="hero-pattern-red" src="images/pattern-red.png" alt="">
+    <img class="hero-pattern-gray" src="images/pattern-gray.png" alt="">
     <div class="wrap hero-inner">
       <div class="hero-grid">
         <div>
           <h1 class="hero-title" data-t="heroTitle"></h1>
           <p class="hero-sub" data-t="heroSub"></p>
           <div class="hero-ctas">
-            <a href="#machines" class="btn-primary"><span class="ms">forklift</span><span data-t="browseStock"></span></a>
+            <a href="#machines" class="btn-primary"><span data-t="browseStock"></span></a>
             <a href="#service" class="btn-outline"><span data-t="bookService"></span></a>
           </div>
         </div>
         <div class="hero-visual">
-          <img class="hero-pattern-red" src="images/pattern-red.png" alt="">
-          <div class="hero-visual-frame">
-            <img id="heroImg" src="images/forklift.webp" alt="">
-          </div>
+          <div class="hero-gallery" id="heroGallery"></div>
           <div class="hero-dots" id="heroDots"></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="search-panel">
-        <div class="search-head">
-          <span class="ms">manage_search</span>
-          <div class="title" data-t="findMachine"></div>
-          <span class="spacer"></span>
-          <div class="count" id="stockCount"></div>
-        </div>
-        <div class="search-grid" id="filterGrid">
-          <button class="btn-search"><span class="ms">search</span><span data-t="search"></span></button>
-        </div>
+  <section id="search">
+    <div class="wrap search-wrap">
+      <div class="search-head">
+        <span class="ms">manage_search</span>
+        <div class="title" data-t="findMachine"></div>
+        <span class="spacer"></span>
+        <div class="count" id="stockCount"></div>
+      </div>
+      <div class="search-grid" id="filterGrid">
+        <button class="btn-search"><span class="ms">search</span><span data-t="search"></span></button>
       </div>
     </div>
   </section>
