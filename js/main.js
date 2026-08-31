@@ -246,6 +246,36 @@ function renderFooter(t) {
   });
 }
 
+const heroGallery = ["images/forklift.webp", "images/stacker.webp", "images/pallet-truck.webp"];
+let heroIndex = 0;
+let heroTimer = null;
+
+function renderHeroDots() {
+  const wrap = document.getElementById("heroDots");
+  wrap.innerHTML = "";
+  heroGallery.forEach((_, i) => {
+    const dot = el("button", { class: i === heroIndex ? "active" : "" });
+    dot.addEventListener("click", () => setHeroImage(i, true));
+    wrap.appendChild(dot);
+  });
+}
+
+function setHeroImage(i, userTriggered) {
+  heroIndex = i;
+  document.getElementById("heroImg").src = heroGallery[heroIndex];
+  document.querySelectorAll("#heroDots button").forEach((d, idx) => d.classList.toggle("active", idx === heroIndex));
+  if (userTriggered) {
+    clearInterval(heroTimer);
+    startHeroRotation();
+  }
+}
+
+function startHeroRotation() {
+  heroTimer = setInterval(() => {
+    setHeroImage((heroIndex + 1) % heroGallery.length, false);
+  }, 4000);
+}
+
 function applyLang() {
   const t = T[lang];
   document.documentElement.setAttribute("dir", t.dir);
@@ -276,3 +306,5 @@ document.getElementById("langToggle").addEventListener("click", () => {
 });
 
 applyLang();
+renderHeroDots();
+startHeroRotation();

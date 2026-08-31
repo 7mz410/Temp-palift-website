@@ -31,18 +31,10 @@
   </header>
 
   <section id="stock">
-    <svg class="bg" width="100%" height="100%" viewBox="0 0 1400 620" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="wtri" width="46" height="40" patternUnits="userSpaceOnUse"><polygon points="23,4 42,36 4,36" fill="none" stroke="#3a3934" stroke-width="1"></polygon></pattern></defs>
-      <rect width="1400" height="620" fill="url(#wtri)"></rect>
-      <polygon points="1120,0 1400,0 1400,330" fill="#921A1D" opacity="0.9"></polygon>
-      <polygon points="1120,0 1400,330 1120,330" fill="#921A1D" opacity="0.35"></polygon>
-      <polygon points="1020,330 1120,330 1120,480" fill="#921A1D" opacity="0.5"></polygon>
-      <polygon points="0,470 120,470 60,580" fill="#921A1D" opacity="0.4"></polygon>
-    </svg>
+    <img class="hero-pattern hero-pattern-gray" src="images/pattern-gray.png" alt="">
     <div class="wrap hero-inner">
       <div class="hero-grid">
         <div>
-          <div class="badge"><span class="ms">verified</span><span data-t="badge"></span></div>
           <h1 class="hero-title" data-t="heroTitle"></h1>
           <p class="hero-sub" data-t="heroSub"></p>
           <div class="hero-ctas">
@@ -51,7 +43,11 @@
           </div>
         </div>
         <div class="hero-visual">
-          <img id="heroImg" src="images/forklift.webp" alt="">
+          <img class="hero-pattern-red" src="images/pattern-red.png" alt="">
+          <div class="hero-visual-frame">
+            <img id="heroImg" src="images/forklift.webp" alt="">
+          </div>
+          <div class="hero-dots" id="heroDots"></div>
         </div>
       </div>
 
