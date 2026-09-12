@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Palift Equipment</title>
+<title>PALIFT | حلول المناولة والرفع والتخزين</title>
+<meta name="description" content="PALIFT Equipment Trading Co. — الوكيل الحصري لعلامة Noblelift في فلسطين. رافعات شوكية، مكدسات وناقلات طبالي، منصات عمل، آلات تنظيف وأنظمة رفوف، مع خدمات ما بعد البيع.">
+<link rel="icon" href="brand/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,33 +16,33 @@
 
   <div class="topbar">
     <div class="wrap">
-      <span class="item"><span class="ms">call</span>+970 2 298 4400</span>
-      <span class="item"><span class="ms">mail</span>sales@palift.ps</span>
+      <span class="item"><span class="ms">call</span><a class="ltr" href="tel:+970567888444">056 788 8444</a></span>
+      <span class="item"><span class="ms">mail</span><a class="ltr" href="mailto:info@palift.ps">info@palift.ps</a></span>
       <span class="spacer"></span>
       <span class="item hours"><span class="ms">schedule</span><span data-t="hours"></span></span>
-      <button id="langToggle"><span class="ms">language</span><span id="langLabel"></span></button>
     </div>
   </div>
 
   <header>
     <div class="wrap">
-      <img class="logo" src="brand/logo-white.png" alt="Palift Equipment">
+      <img class="logo" src="brand/logo-white.png" alt="PALIFT">
       <nav id="mainNav"></nav>
       <a href="#contact" class="btn-quote"><span class="ms">request_quote</span><span data-t="getQuote"></span></a>
     </div>
   </header>
 
-  <section id="stock">
+  <section id="home">
     <img class="hero-pattern-red" src="images/pattern-red.png" alt="">
     <img class="hero-pattern-gray" src="images/pattern-gray.png" alt="">
     <div class="wrap hero-inner">
       <div class="hero-grid">
         <div>
+          <span class="hero-badge"><span class="ms">verified</span><span data-t="badge"></span></span>
           <h1 class="hero-title" data-t="heroTitle"></h1>
           <p class="hero-sub" data-t="heroSub"></p>
           <div class="hero-ctas">
-            <a href="#machines" class="btn-primary"><span data-t="browseStock"></span></a>
-            <a href="#service" class="btn-outline"><span data-t="bookService"></span></a>
+            <a href="#contact" class="btn-primary"><span data-t="ctaQuote"></span></a>
+            <a href="#products" class="btn-outline"><span data-t="ctaBrowse"></span></a>
           </div>
         </div>
         <div class="hero-visual">
@@ -51,60 +53,112 @@
     </div>
   </section>
 
-  <section id="search">
-    <div class="wrap search-wrap">
-      <div class="search-head">
-        <span class="ms">manage_search</span>
-        <div class="title" data-t="findMachine"></div>
-        <span class="spacer"></span>
-        <div class="count" id="stockCount"></div>
-      </div>
-      <div class="search-grid" id="filterGrid">
-        <button class="btn-search"><span class="ms">search</span><span data-t="search"></span></button>
-      </div>
+  <section id="message-strip">
+    <div class="msg-inner">
+      <span class="ms">format_quote</span>
+      <p data-t="brandMessage"></p>
     </div>
   </section>
 
-  <section id="machines">
+  <section id="about">
     <div class="section-head">
       <div>
-        <div class="kicker"><span class="bar"></span><span data-t="kickerStock"></span></div>
-        <h2 data-t="featuredTitle"></h2>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerAbout"></span></div>
+        <h2 data-t="aboutTitle"></h2>
       </div>
-      <span class="spacer1"></span>
-      <a href="#stock" class="view-all"><span data-t="viewAll"></span><span class="ms" id="viewAllArrow">arrow_forward</span></a>
     </div>
-    <div class="machine-grid" id="machineGrid"></div>
+    <div class="about-grid">
+      <p class="about-body" data-t="aboutBody"></p>
+      <div class="vm-grid">
+        <div class="vm-card">
+          <span class="ms">visibility</span>
+          <div class="vm-title" data-t="visionTitle"></div>
+          <p data-t="visionBody"></p>
+        </div>
+        <div class="vm-card">
+          <span class="ms">flag</span>
+          <div class="vm-title" data-t="missionTitle"></div>
+          <p data-t="missionBody"></p>
+        </div>
+      </div>
+    </div>
+    <div class="why-block">
+      <div class="why-head" data-t="whyTitle"></div>
+      <div class="why-grid" id="whyGrid"></div>
+    </div>
   </section>
 
-  <section id="parts">
-    <div class="kicker"><span class="bar"></span><span data-t="kickerCats"></span></div>
-    <h2 data-t="catsTitle" style="margin:12px 0 30px;"></h2>
+  <section id="products">
+    <div class="section-head">
+      <div>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerProducts"></span></div>
+        <h2 data-t="productsTitle"></h2>
+      </div>
+    </div>
+    <p class="section-lead" data-t="productsLead"></p>
     <div class="cat-grid" id="catGrid"></div>
   </section>
 
-  <section id="service">
+  <section id="solutions">
+    <div class="section-head">
+      <div>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerTasks"></span></div>
+        <h2 data-t="tasksTitle"></h2>
+      </div>
+    </div>
+    <p class="section-lead" data-t="tasksLead"></p>
+    <div class="table-card">
+      <table class="pf-table">
+        <thead><tr><th data-t="thTask"></th><th data-t="thPath"></th></tr></thead>
+        <tbody id="taskRows"></tbody>
+      </table>
+    </div>
+
+    <div class="section-head sectors-head">
+      <div>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerSectors"></span></div>
+        <h2 data-t="sectorsTitle"></h2>
+      </div>
+    </div>
+    <div class="sector-grid" id="sectorGrid"></div>
+  </section>
+
+  <section id="services">
     <div class="wrap">
-      <div class="service-grid">
+      <div class="section-head">
         <div>
-          <div class="kicker"><span class="bar"></span><span data-t="kickerService"></span></div>
-          <h2 data-t="serviceTitle"></h2>
-          <p class="service-body" data-t="serviceBody"></p>
-          <div class="stats-row" id="statsRow"></div>
+          <div class="kicker"><span class="bar"></span><span data-t="kickerServices"></span></div>
+          <h2 data-t="servicesTitle"></h2>
         </div>
-        <div class="services-grid" id="serviceGrid"></div>
+      </div>
+      <p class="section-lead" data-t="servicesLead"></p>
+      <div class="services-grid" id="serviceGrid"></div>
+      <div class="notice">
+        <span class="ms">info</span>
+        <div>
+          <div class="notice-title" data-t="financeTitle"></div>
+          <p data-t="financeBody"></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="company">
+  <section id="choose">
     <div class="section-head">
       <div>
-        <div class="kicker"><span class="bar"></span><span data-t="kickerTeam"></span></div>
-        <h2 data-t="teamTitle"></h2>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerChoose"></span></div>
+        <h2 data-t="chooseTitle"></h2>
       </div>
     </div>
-    <div class="team-grid" id="teamGrid"></div>
+    <p class="section-lead" data-t="chooseLead"></p>
+    <div class="check-grid" id="checkGrid"></div>
+    <div class="result-card">
+      <span class="ms">task_alt</span>
+      <div>
+        <div class="result-title" data-t="resultTitle"></div>
+        <p data-t="resultBody"></p>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
@@ -114,11 +168,12 @@
     </svg>
     <div class="contact-inner">
       <div>
+        <div class="kicker light"><span class="bar"></span><span data-t="kickerContact"></span></div>
         <h2 class="contact-title" data-t="contactTitle"></h2>
         <p class="contact-body" data-t="contactBody"></p>
         <div class="contact-lines" id="contactLines"></div>
       </div>
-      <div class="contact-form">
+      <form class="contact-form" id="quoteForm">
         <div class="form-title" data-t="formTitle"></div>
         <div class="form-grid" id="formGrid">
           <div class="col-full" id="messageField">
@@ -126,27 +181,33 @@
             <textarea rows="3"></textarea>
           </div>
         </div>
-        <button class="btn-send" data-t="sendRequest"></button>
-      </div>
+        <button type="submit" class="btn-send btn-wa"><span class="ms">chat</span><span data-t="sendWhatsapp"></span></button>
+        <button type="button" class="btn-mail" id="mailBtn"><span class="ms">mail</span><span data-t="sendMail"></span></button>
+        <p class="form-note" data-t="formNote"></p>
+      </form>
     </div>
   </section>
 
   <footer>
     <div class="footer-grid">
       <div>
-        <img class="footer-logo" src="brand/logo-white.png" alt="Palift Equipment">
+        <img class="footer-logo" src="brand/logo-white.png" alt="PALIFT">
+        <div class="footer-slogan" data-t="slogan"></div>
         <p class="footer-blurb" data-t="footerBlurb"></p>
       </div>
       <div id="footerCols" style="display:contents;"></div>
     </div>
+    <p class="footer-disclaimer" data-t="disclaimer"></p>
     <div class="footer-bottom">
       <div class="footer-bottom-inner">
         <span data-t="copyright"></span>
         <span class="spacer"></span>
-        <span data-t="vatLine"></span>
+        <span data-t="addressShort"></span>
       </div>
     </div>
   </footer>
+
+  <a class="wa-float" id="waFloat" href="#" aria-label="واتساب"><span class="ms">chat</span></a>
 
 <script src="js/main.js"></script>
 </body>

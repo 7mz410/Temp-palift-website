@@ -1,249 +1,324 @@
+const SALES_PHONE = "056 788 8444";
+const SALES_WA = "970567888444";
+const AFTERSALES_PHONE = "056 692 2999";
+const EMAIL = "info@palift.ps";
+
 const T = {
-  en: {
-    dir: "ltr",
-    hours: "Sun–Thu 8:00–17:00", langSwitch: "العربية", getQuote: "Request a quote",
-    badge: "Authorised sales, parts & service",
-    heroTitle: "Forklifts, parts and service across Palestine.",
-    heroSub: "New and used material handling equipment, genuine spare parts, and field service teams covering Ramallah, Nablus, Hebron and Gaza.",
-    browseStock: "Browse stock", bookService: "Book a service", heroAlt: "Palift equipment",
-    gallery: ["Electric stacker photo", "Diesel forklift photo", "Reach truck photo"],
-    findMachine: "Find your machine", stockCount: "142 machines in stock", search: "Search",
-    kickerStock: "Current stock", featuredTitle: "Featured machines", viewAll: "View all stock", arrowIcon: "arrow_forward",
-    priceFrom: "From", enquire: "Enquire", photoSoon: "Photo coming soon",
-    kickerCats: "Categories", catsTitle: "Browse by equipment type",
-    kickerService: "Aftersales", serviceTitle: "Service that keeps the fleet moving",
-    serviceBody: "Palift runs its own workshops and mobile service units. Every machine we sell is registered by VIN, so warranty, job cards and parts history stay in one record for its whole life.",
-    kickerTeam: "Our team", teamTitle: "Talk to a specialist",
-    contactTitle: "Tell us what you need to lift.", contactBody: "Send the load, height and site conditions and we will come back with two or three machines that fit, with pricing and lead time.",
-    formTitle: "Request a quote", sendRequest: "Send request",
-    fMessage: "What do you need?", fMessagePh: "Load weight, lift height, indoor or outdoor…",
-    footerBlurb: "Palift Equipment supplies, services and rents material handling equipment across the West Bank and Gaza.",
-    copyright: "© 2026 Palift Equipment. All rights reserved.", vatLine: "VAT reg. 562841903 · Ramallah, Palestine",
-    filters: [["Equipment type", "All types"], ["Brand", "All brands"], ["Capacity", "Any capacity"], ["Fuel", "Any fuel"]],
-    machines: [
-      { brand: "Toyota", model: "8FD30 Diesel", tag: "Used · 2021", tagBg: "#252523", price: "₪118,000", img: null,
-        specs: [["fitness_center", "3.0 t"], ["height", "4,700 mm"], ["local_gas_station", "Diesel"], ["schedule", "3,240 h"]] },
-      { brand: "Linde", model: "E20 PH Electric", tag: "New", tagBg: "#921A1D", price: "₪204,500", img: null,
-        specs: [["fitness_center", "2.0 t"], ["height", "5,200 mm"], ["bolt", "Electric"], ["battery_full", "80 V"]] },
-      { brand: "Hyster", model: "H2.5FT LPG", tag: "Used · 2019", tagBg: "#252523", price: "₪86,400", img: null,
-        specs: [["fitness_center", "2.5 t"], ["height", "3,300 mm"], ["propane", "LPG"], ["schedule", "6,110 h"]] },
-      { brand: "Jungheinrich", model: "ETV 216 Reach", tag: "Used · 2022", tagBg: "#252523", price: "₪147,900", img: null,
-        specs: [["fitness_center", "1.6 t"], ["height", "8,400 mm"], ["bolt", "Electric"], ["schedule", "1,860 h"]] },
-      { brand: "Manitou", model: "MT 1440 Telehandler", tag: "New", tagBg: "#921A1D", price: "₪392,000", img: null,
-        specs: [["fitness_center", "4.0 t"], ["height", "13,500 mm"], ["local_gas_station", "Diesel"], ["terrain", "4x4"]] },
-      { brand: "Still", model: "EXU 20 Stacker", tag: "Used · 2023", tagBg: "#1f8a4d", price: "₪41,200", img: null,
-        specs: [["fitness_center", "2.0 t"], ["height", "2,900 mm"], ["bolt", "Electric"], ["schedule", "640 h"]] }
-    ],
-    categories: [["forklift", "Diesel forklifts", "38 machines"], ["bolt", "Electric forklifts", "44 machines"], ["conveyor_belt", "Reach trucks", "17 machines"], ["pallet", "Pallet stackers", "23 machines"], ["agriculture", "Telehandlers", "9 machines"], ["build", "Attachments & parts", "1,400+ items"]],
-    services: [
-      ["build", "Maintenance contracts", "Scheduled servicing with fixed hourly rates and priority response."],
-      ["engineering", "Repairs & overhaul", "Workshop rebuilds, hydraulics, masts and transmission work."],
-      ["inventory_2", "Genuine spare parts", "Stocked filters, forks, tyres and hydraulic components."],
-      ["event_available", "Short & long term rental", "Daily, monthly and project rental with operator training."]
-    ],
-    stats: [["18", "Years operating"], ["11", "Field engineers"], ["4h", "Average response"]],
-    team: [["Ziyad Rafidi", "Sales Director", "+970 59 812 4477", "Z"], ["Layan Odeh", "Parts & Aftersales", "+970 59 640 2210", "L"], ["Bashar Qawasmi", "Service Manager", "+970 59 337 8865", "B"]],
-    contactLines: [["location_on", "Al-Balou' Industrial Area, Ramallah"], ["call", "+970 2 298 4400"], ["mail", "sales@palift.ps"]],
-    formFields: [["Full name", "Your name", "1 / 2"], ["Company", "Company name", "2 / 3"], ["Phone", "+970…", "1 / 2"], ["Email", "you@company.ps", "2 / 3"]],
-    footerCols: [["Stock", ["Diesel forklifts", "Electric forklifts", "Reach trucks", "Telehandlers"]], ["Company", ["About Palift", "Our workshops", "Careers", "News"]], ["Support", ["Book a service", "Order parts", "Warranty", "Contact"]]],
-    nav: [["Stock", "#stock"], ["Machines", "#machines"], ["Parts", "#parts"], ["Service", "#service"], ["Company", "#company"], ["Contact", "#contact"]]
-  },
-  ar: {
-    dir: "rtl",
-    hours: "الأحد–الخميس ٨:٠٠–١٧:٠٠", langSwitch: "English", getQuote: "اطلب عرض سعر",
-    badge: "وكيل معتمد للبيع وقطع الغيار والصيانة",
-    heroTitle: "رافعات شوكية وقطع غيار وصيانة في كل فلسطين.",
-    heroSub: "معدات مناولة جديدة ومستعملة، قطع غيار أصلية، وفرق صيانة ميدانية تغطي رام الله ونابلس والخليل وغزة.",
-    browseStock: "تصفّح المخزون", bookService: "احجز صيانة", heroAlt: "معدات بالِفت",
-    gallery: ["صورة ستاكر كهربائي", "صورة رافعة ديزل", "صورة رافعة ريتش"],
-    findMachine: "ابحث عن آلتك", stockCount: "١٤٢ آلة في المخزون", search: "بحث",
-    kickerStock: "المخزون الحالي", featuredTitle: "آلات مختارة", viewAll: "كل المخزون", arrowIcon: "arrow_back",
-    priceFrom: "يبدأ من", enquire: "استفسار", photoSoon: "الصورة قريباً",
-    kickerCats: "الأقسام", catsTitle: "تصفّح حسب نوع المعدة",
-    kickerService: "خدمات ما بعد البيع", serviceTitle: "صيانة تحافظ على حركة الأسطول",
-    serviceBody: "تدير بالِفت ورشها الخاصة ووحدات صيانة متنقلة. كل آلة نبيعها تُسجّل برقم الهيكل، ليبقى الضمان وبطاقات العمل وسجل القطع في ملف واحد طوال عمرها.",
-    kickerTeam: "فريقنا", teamTitle: "تحدّث إلى مختص",
-    contactTitle: "أخبرنا ما تحتاج رفعه.", contactBody: "أرسل الحمولة والارتفاع وظروف الموقع وسنعود إليك باثنتين أو ثلاث آلات مناسبة مع السعر ومدة التوريد.",
-    formTitle: "طلب عرض سعر", sendRequest: "إرسال الطلب",
-    fMessage: "ما الذي تحتاجه؟", fMessagePh: "وزن الحمولة، ارتفاع الرفع، داخلي أو خارجي…",
-    footerBlurb: "بالِفت للمعدات توفّر معدات المناولة وخدماتها وتأجيرها في الضفة الغربية وغزة.",
-    copyright: "© ٢٠٢٦ بالِفت للمعدات. جميع الحقوق محفوظة.", vatLine: "رقم ضريبي ٥٦٢٨٤١٩٠٣ · رام الله، فلسطين",
-    filters: [["نوع المعدة", "كل الأنواع"], ["الماركة", "كل الماركات"], ["الحمولة", "أي حمولة"], ["الوقود", "أي نوع"]],
-    machines: [
-      { brand: "تويوتا", model: "8FD30 ديزل", tag: "مستعملة · ٢٠٢١", tagBg: "#252523", price: "₪١١٨,٠٠٠", img: null,
-        specs: [["fitness_center", "٣.٠ طن"], ["height", "٤,٧٠٠ مم"], ["local_gas_station", "ديزل"], ["schedule", "٣,٢٤٠ ساعة"]] },
-      { brand: "ليندي", model: "E20 PH كهربائية", tag: "جديدة", tagBg: "#921A1D", price: "₪٢٠٤,٥٠٠", img: null,
-        specs: [["fitness_center", "٢.٠ طن"], ["height", "٥,٢٠٠ مم"], ["bolt", "كهربائية"], ["battery_full", "٨٠ فولت"]] },
-      { brand: "هايستر", model: "H2.5FT غاز", tag: "مستعملة · ٢٠١٩", tagBg: "#252523", price: "₪٨٦,٤٠٠", img: null,
-        specs: [["fitness_center", "٢.٥ طن"], ["height", "٣,٣٠٠ مم"], ["propane", "غاز"], ["schedule", "٦,١١٠ ساعة"]] },
-      { brand: "يونجهاينريش", model: "ETV 216 ريتش", tag: "مستعملة · ٢٠٢٢", tagBg: "#252523", price: "₪١٤٧,٩٠٠", img: null,
-        specs: [["fitness_center", "١.٦ طن"], ["height", "٨,٤٠٠ مم"], ["bolt", "كهربائية"], ["schedule", "١,٨٦٠ ساعة"]] },
-      { brand: "مانيتو", model: "MT 1440 تيليهاندلر", tag: "جديدة", tagBg: "#921A1D", price: "₪٣٩٢,٠٠٠", img: null,
-        specs: [["fitness_center", "٤.٠ طن"], ["height", "١٣,٥٠٠ مم"], ["local_gas_station", "ديزل"], ["terrain", "4x4"]] },
-      { brand: "ستيل", model: "EXU 20 ستاكر", tag: "مستعملة · ٢٠٢٣", tagBg: "#1f8a4d", price: "₪٤١,٢٠٠", img: null,
-        specs: [["fitness_center", "٢.٠ طن"], ["height", "٢,٩٠٠ مم"], ["bolt", "كهربائية"], ["schedule", "٦٤٠ ساعة"]] }
-    ],
-    categories: [["forklift", "رافعات ديزل", "٣٨ آلة"], ["bolt", "رافعات كهربائية", "٤٤ آلة"], ["conveyor_belt", "رافعات ريتش", "١٧ آلة"], ["pallet", "ستاكر بالتات", "٢٣ آلة"], ["agriculture", "تيليهاندلر", "٩ آلات"], ["build", "ملحقات وقطع غيار", "+١,٤٠٠ صنف"]],
-    services: [
-      ["build", "عقود صيانة", "صيانة دورية بأسعار ساعة ثابتة وأولوية في الاستجابة."],
-      ["engineering", "إصلاح وعمرة", "إعادة تأهيل في الورشة، هيدروليك، صواري وناقل حركة."],
-      ["inventory_2", "قطع غيار أصلية", "فلاتر، شوك، إطارات ومكوّنات هيدروليكية متوفرة."],
-      ["event_available", "تأجير قصير وطويل", "تأجير يومي وشهري وللمشاريع مع تدريب المشغلين."]
-    ],
-    stats: [["١٨", "سنة خبرة"], ["١١", "مهندس ميداني"], ["٤س", "متوسط الاستجابة"]],
-    team: [["زياد رفيدي", "مدير المبيعات", "+٩٧٠ ٥٩ ٨١٢ ٤٤٧٧", "ز"], ["ليان عودة", "قطع الغيار وما بعد البيع", "+٩٧٠ ٥٩ ٦٤٠ ٢٢١٠", "ل"], ["بشار قواسمي", "مدير الصيانة", "+٩٧٠ ٥٩ ٣٣٧ ٨٨٦٥", "ب"]],
-    contactLines: [["location_on", "المنطقة الصناعية، البالوع، رام الله"], ["call", "+٩٧٠ ٢ ٢٩٨ ٤٤٠٠"], ["mail", "sales@palift.ps"]],
-    formFields: [["الاسم الكامل", "اسمك", "1 / 2"], ["الشركة", "اسم الشركة", "2 / 3"], ["الهاتف", "+٩٧٠…", "1 / 2"], ["البريد الإلكتروني", "you@company.ps", "2 / 3"]],
-    footerCols: [["المخزون", ["رافعات ديزل", "رافعات كهربائية", "رافعات ريتش", "تيليهاندلر"]], ["الشركة", ["عن بالِفت", "ورشنا", "وظائف", "أخبار"]], ["الدعم", ["احجز صيانة", "اطلب قطع", "الضمان", "تواصل"]]],
-    nav: [["المخزون", "#stock"], ["الآلات", "#machines"], ["قطع الغيار", "#parts"], ["الصيانة", "#service"], ["الشركة", "#company"], ["تواصل", "#contact"]]
-  }
+  hours: "السبت – الخميس، ٨:٠٠ صباحاً – ٤:٠٠ مساءً",
+  getQuote: "اطلب عرض سعر",
+
+  nav: [
+    ["من نحن", "#about"],
+    ["فئات المنتجات", "#products"],
+    ["الحلول والقطاعات", "#solutions"],
+    ["الخدمات", "#services"],
+    ["كيف نختار", "#choose"],
+    ["تواصل معنا", "#contact"]
+  ],
+
+  badge: "الوكيل الحصري لعلامة Noblelift في فلسطين",
+  heroTitle: "شريكك المحلي لاختيار المعدة المناسبة",
+  heroSub: "معدات عملية للمستودعات والمصانع والمقاولين والمنشآت التجارية. مناولة المواد • الرفع • التخزين.",
+  ctaQuote: "اطلب عرض سعر",
+  ctaBrowse: "تصفّح فئات المنتجات",
+  gallery: ["مكدس كهربائي", "رافعة شوكية", "ناقلة طبالي"],
+
+  brandMessage: "لا تبدأ من اسم المعدة. ابدأ من المهمة، والحمولة، وموقع العمل. يجمع فريقنا هذه المعلومات ويقارنها بالمواصفات الرسمية للوصول إلى الفئة والطراز والتجهيز الأنسب.",
+
+  kickerAbout: "من نحن",
+  aboutTitle: "شريك محلي متخصص في معدات المناولة والرفع",
+  aboutBody: "تأسست PALIFT Equipment Trading Co. عام 2025 كشركة فلسطينية متخصصة في معدات مناولة المواد والتخزين والرفع. يقع مقرها في بيت ساحور بمحافظة بيت لحم، وتخدم الشركات والمصانع والمستودعات والمقاولين والمنشآت التي تحتاج إلى حلول عملية لنقل الأحمال، وتنظيم التخزين، والعمل على الارتفاع، والعناية بالمساحات الصناعية والتجارية.",
+  visionTitle: "رؤيتنا",
+  visionBody: "أن نكون شريكاً موثوقاً للمنشآت الفلسطينية في اختيار وتشغيل معدات المناولة والرفع.",
+  missionTitle: "مهمتنا",
+  missionBody: "تقديم معدات وخدمات تساعد على تحسين حركة المواد، وتنظيم التخزين، ورفع كفاءة العمليات وتقليل الجهد والوقت المرتبطين بالمناولة اليدوية.",
+
+  whyTitle: "لماذا PALIFT؟",
+  why: [
+    ["workspace_premium", "وكيل حصري لعلامة Noblelift في فلسطين."],
+    ["category", "مجموعة شاملة من معدات المناولة والرفع والتخزين."],
+    ["support_agent", "مساعدة فنية لاختيار المعدة وفق متطلبات التشغيل الفعلية."],
+    ["headset_mic", "قنوات مخصصة للمبيعات وخدمات ما بعد البيع."],
+    ["build", "صيانة وقطع غيار وضمان وتدريب وفق الاتفاق والوثائق المعتمدة."],
+    ["fact_check", "معلومات واضحة مبنية على المواصفات الرسمية للطرازات."]
+  ],
+
+  kickerProducts: "فئات المنتجات",
+  productsTitle: "حلول متنوعة لمتطلبات تشغيل مختلفة",
+  productsLead: "يعتمد الاختيار على الحمولة، وارتفاع الرفع، وعرض الممرات، وطبيعة الأرضية، ومكان الاستخدام، وساعات التشغيل اليومية.",
+  categories: [
+    ["bolt", "الرافعات الشوكية الكهربائية",
+      "تشغيل مناسب للمستودعات والمصانع ومراكز التوزيع، خصوصاً في البيئات التي تستفيد من انخفاض الضوضاء وعدم وجود انبعاثات عادم مباشرة أثناء التشغيل.",
+      "المستودعات، خطوط الإنتاج، مناطق التحميل والمناولة الداخلية."],
+    ["local_gas_station", "الرافعات الشوكية بالديزل",
+      "حلول للأعمال الخارجية والعمليات التي تتطلب قدرة وتحمّلاً يتناسبان مع طبيعة الموقع، بعد تقييم التهوية والأرضية والانحدارات ومسارات الحركة.",
+      "الساحات الخارجية، المواقع الصناعية، الإنشاءات والأحمال الثقيلة."],
+    ["terrain", "رافعات الأراضي الوعرة",
+      "مصممة للمواقع الخارجية والأرضيات غير المستوية. يعتمد الاختيار على الحمولة، ونوع الدفع، والإطارات، والخلوص الأرضي والتضاريس.",
+      "مواقع الإنشاء، الساحات غير المعبدة والمواقع الخارجية."],
+    ["warehouse", "رافعات المستودعات ذات السارية الممتدة",
+      "للوصول إلى الرفوف المرتفعة والعمل داخل الممرات الضيقة، مع ضرورة معرفة ارتفاع الرفع والحمولة عند الارتفاع وعرض الممر.",
+      "المستودعات ذات الرفوف المرتفعة ومراكز التوزيع."],
+    ["forklift", "مكدسات وناقلات الطبالي",
+      "لرفع الطبالي إلى مستويات التخزين أو نقلها أفقياً وتقليل الجهد في حركة البضائع المتكررة.",
+      "المخازن، الأرصفة، خطوط الإنتاج، المتاجر ومناطق تحضير الطلبات."],
+    ["pallet", "ناقلات الطبالي اليدوية",
+      "حل عملي للنقل لمسافات قصيرة على أرضيات مناسبة، مع اختيار قدرة الحمولة وطول الشوك وعرضه بما يتناسب مع الطبالي.",
+      "المتاجر، المخازن الصغيرة ومناطق الاستلام والتسليم."],
+    ["elevator", "منصات العمل المقصية",
+      "مساحة عمل مرتفعة لمهام الصيانة والتركيب والتجهيز، ويحدد الطراز وفق ارتفاع العمل وحمولة المنصة وأبعاد الموقع.",
+      "الصيانة، التركيبات، تجهيز المستودعات وأعمال الارتفاع."],
+    ["cleaning_services", "آلات غسيل وتجفيف الأرضيات",
+      "تنظيف منظم للمساحات الواسعة. تتوفر فئات يقودها المستخدم مشياً أو ركوباً بحسب الطراز، مع اختلاف سعة الخزانات وعرض التنظيف.",
+      "المستودعات، المصانع، المتاجر الكبيرة والمرافق التجارية."],
+    ["shelves", "أنظمة الرفوف والتخزين",
+      "تنظيم المواد والطبالي وزيادة الاستفادة من مساحة التخزين بعد دراسة الأبعاد والأحمال ومسارات حركة المعدات والأفراد.",
+      "المستودعات، مراكز التوزيع، غرف التخزين والمنشآت التجارية."]
+  ],
+  usesLabel: "الاستخدامات:",
+
+  kickerTasks: "حلول تبدأ من المهمة",
+  tasksTitle: "صف لنا المهمة، ونحدد نحن الفئة",
+  tasksLead: "لا يحتاج العميل إلى معرفة الاسم الفني للمعدة. يكفي وصف المهمة والحمولة وموقع العمل، وسيساعدك فريق PALIFT في تحديد الفئات المناسبة.",
+  thTask: "المهمة",
+  thPath: "مسار الحل المقترح",
+  tasks: [
+    ["نقل الطبالي أفقياً", "ناقلة طبالي يدوية أو كهربائية وفق الوزن والمسافة وتكرار الاستخدام."],
+    ["رفع الطبالي إلى التخزين", "مكدس طبالي أو رافعة مستودعات أو رافعة شوكية وفق الارتفاع والحمولة ونوع الرفوف."],
+    ["المناولة في الساحات الخارجية", "رافعة شوكية مناسبة للأرضية والانحدارات ومسافة الحركة؛ وقد تتطلب الأرضيات غير المستوية رافعة أراضٍ وعرة."],
+    ["العمل داخل ممرات ضيقة", "دراسة دقيقة لأبعاد المعدة ونصف قطر الدوران وعرض الممر والحمولة عند الارتفاع."],
+    ["العمل على ارتفاع", "منصة عمل مرتفعة وفق ارتفاع العمل، الحمولة، أبعاد المداخل، الأرضية والاستخدام الداخلي أو الخارجي."],
+    ["تنظيف المساحات الواسعة", "آلة غسيل وتجفيف وفق المساحة ونوع الأرضية وعرض التنظيف وسعة الخزانات."],
+    ["تنظيم التخزين", "حلول رفوف بعد دراسة أبعاد الموقع، السقف، الأحمال، الطبالي ومسارات الحركة والسلامة."]
+  ],
+
+  kickerSectors: "حلول حسب القطاع",
+  sectorsTitle: "قطاعات نخدمها",
+  sectors: [
+    ["warehouse", "المستودعات واللوجستيات", "رافعات مستودعات، مكدسات وناقلات طبالي، رافعات شوكية وأنظمة رفوف لتحسين حركة البضائع."],
+    ["factory", "المصانع", "رافعات وناقلات طبالي ومعدات تنظيف لنقل المواد بين مناطق الإنتاج والتخزين."],
+    ["engineering", "المقاولات والإنشاءات", "رافعات للأعمال الخارجية والأراضي الوعرة ومنصات عمل مرتفعة."],
+    ["foundation", "مصانع الحجر والصناعات الثقيلة", "معدات يتم اختيارها وفق وزن الحمولة وأبعادها وطريقة تثبيتها وظروف الموقع."],
+    ["storefront", "المتاجر والمرافق", "ناقلات طبالي ومكدسات وآلات تنظيف ومنصات لأعمال الصيانة."],
+    ["business_center", "المنشآت الخدمية", "حلول تشغيل وصيانة وتنظيف تناسب الاستخدام اليومي داخل المنشآت."]
+  ],
+
+  kickerServices: "الخدمات المتكاملة",
+  servicesTitle: "من فهم الاحتياج إلى ما بعد التسليم",
+  servicesLead: "تمتد خدمات PALIFT من فهم الاحتياج إلى ما بعد تسليم المعدة، وفق نطاق العمل والاتفاق المعتمد.",
+  services: [
+    ["support_agent", "الاستشارة والاختيار", "تحديد فئة المعدات ومقارنة الخيارات وفق متطلبات التشغيل الفعلية."],
+    ["request_quote", "عروض الأسعار", "عرض رسمي يوضح الطراز والتجهيزات والمواصفات والشروط التجارية ذات الصلة."],
+    ["build", "الصيانة", "فحص فني، صيانة دورية، تشخيص أعطال وإصلاح للمعدات التي تدعمها PALIFT."],
+    ["inventory_2", "قطع الغيار", "مساعدة في تحديد القطعة بالاعتماد على الطراز والرقم التسلسلي ورقم القطعة عند توفره."],
+    ["verified_user", "الضمان", "توضيح مدة التغطية ونطاقها في عرض السعر واتفاقية البيع وشهادة الضمان."],
+    ["school", "التسليم والتدريب", "إرشادات التشغيل والعناية اليومية والتدريب المتفق عليه عند إدراجه في العرض."],
+    ["account_balance", "استفسارات التمويل", "إعداد عرض المعدات والبيانات الفنية اللازمة لاستكشاف الخيارات، مع خضوع الموافقة لشروط الجهة الممولة."]
+  ],
+  financeTitle: "معلومة مهمة بشأن التمويل",
+  financeBody: "PALIFT ليست جهة إقراض. لا يعني إرسال طلب التمويل أو الحصول على عرض سعر الموافقة على التمويل. تحدد الجهة الممولة الدفعة الأولى والمدة والتكاليف والضمانات والتأمينات والوثائق المطلوبة.",
+
+  kickerChoose: "كيف نختار المعدة المناسبة؟",
+  chooseTitle: "الترشيح يبدأ من المعلومات التشغيلية",
+  chooseLead: "يبدأ الترشيح من المعلومات التشغيلية، وليس من اسم الطراز أو القدرة الاسمية وحدها. أرسل لنا ما يتوفر لديك من البيانات التالية:",
+  checks: [
+    "نوع المواد أو الطبالي ووزنها",
+    "ارتفاع الرفع أو العمل المطلوب",
+    "أبعاد الحمولة أو الطبالي",
+    "عرض الممرات والأبواب والمصاعد",
+    "مساحة الدوران ونوع الأرضية",
+    "الاستخدام الداخلي أو الخارجي",
+    "ساعات التشغيل اليومية والمناوبات",
+    "مسافة الحركة وتكرار النقل",
+    "مصدر الطاقة أو نوع البطارية",
+    "موقع الاستخدام والانحدارات",
+    "متطلبات التسليم والصيانة والتدريب",
+    "صور الموقع أو مخططه إن أمكن"
+  ],
+  resultTitle: "النتيجة",
+  resultBody: "يراجع الفريق المعلومات، ويستكمل البيانات الأساسية، ويحدد الفئة أو الطراز والتجهيزات المناسبة، ثم يصدر عرض سعر رسمياً يوضح المواصفات والشروط والتوفر المتوقع عند إصدار العرض.",
+
+  kickerContact: "التواصل وطلب عرض السعر",
+  contactTitle: "ابدأ من طبيعة المهمة",
+  contactBody: "أرسل وصف المهمة، ووزن الحمولة، وارتفاع الرفع، وطبيعة موقع العمل، وساعات التشغيل المتوقعة. لا تحتاج إلى معرفة اسم الطراز؛ سيساعدك فريق PALIFT على تحديد الفئة والطراز المناسبين.",
+  contactLines: [
+    ["call", "المبيعات:", SALES_PHONE, "tel:+970567888444"],
+    ["headset_mic", "خدمات ما بعد البيع:", AFTERSALES_PHONE, "tel:+970566922999"],
+    ["mail", "البريد الإلكتروني:", EMAIL, "mailto:" + EMAIL],
+    ["location_on", "العنوان:", "بيت ساحور، بالقرب من سوق الشعب، محافظة بيت لحم، فلسطين", null],
+    ["schedule", "ساعات تنسيق ما بعد البيع:", "السبت إلى الخميس، ٨:٠٠ صباحاً – ٤:٠٠ مساءً", null]
+  ],
+
+  formTitle: "طلب عرض سعر",
+  formFields: [
+    ["name", "الاسم الكامل", "الاسم", "1 / 2"],
+    ["company", "المنشأة", "اسم الشركة أو المنشأة", "2 / 3"],
+    ["phone", "رقم الهاتف", "05x xxx xxxx", "1 / 2"],
+    ["email", "البريد الإلكتروني", "you@company.ps", "2 / 3"],
+    ["load", "وزن الحمولة", "مثال: ٢ طن", "1 / 2"],
+    ["height", "ارتفاع الرفع", "مثال: ٣٬٥٠٠ مم", "2 / 3"]
+  ],
+  fMessage: "وصف المهمة وموقع العمل",
+  fMessagePh: "نوع المواد، طبيعة الموقع (داخلي أو خارجي)، عرض الممرات، ساعات التشغيل…",
+  sendWhatsapp: "إرسال عبر واتساب",
+  sendMail: "إرسال عبر البريد الإلكتروني",
+  formNote: "يفتح الزر تطبيق واتساب أو بريدك برسالة جاهزة تتضمن ما عبّأته.",
+
+  slogan: "حلول أذكى. رفع بثقة.",
+  footerBlurb: "PALIFT Equipment Trading Co. — حلول عملية تبدأ من احتياجك وتستمر معك بعد التسليم.",
+  footerCols: [
+    ["فئات المنتجات", [["الرافعات الشوكية الكهربائية", "#products"], ["الرافعات الشوكية بالديزل", "#products"], ["رافعات المستودعات", "#products"], ["منصات العمل المقصية", "#products"], ["أنظمة الرفوف والتخزين", "#products"]]],
+    ["الشركة", [["من نحن", "#about"], ["لماذا PALIFT؟", "#about"], ["حلول حسب القطاع", "#solutions"], ["كيف نختار المعدة", "#choose"]]],
+    ["الدعم", [["الخدمات المتكاملة", "#services"], ["قطع الغيار والصيانة", "#services"], ["طلب عرض سعر", "#contact"], ["تواصل معنا", "#contact"]]]
+  ],
+  disclaimer: "تختلف المواصفات والتجهيزات والتوفر والأسعار والضمان وشروط التمويل وفق الطراز وعرض السعر والاتفاق النهائي. تُعد الوثائق المعتمدة المرجع النهائي للمواصفات والشروط التجارية.",
+  copyright: "جميع الحقوق محفوظة © " + new Date().getFullYear() + " — PALIFT Equipment Trading Co.",
+  addressShort: "بيت ساحور، محافظة بيت لحم، فلسطين • palift.ps"
 };
 
-const STORAGE_KEY = "palift-lang";
-let lang = localStorage.getItem(STORAGE_KEY) || "ar";
-
-function el(tag, attrs = {}, children = []) {
+const el = (tag, attrs = {}, children = []) => {
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
+    if (v === null || v === undefined) continue;
     if (k === "text") node.textContent = v;
-    else if (k === "html") node.innerHTML = v;
     else node.setAttribute(k, v);
   }
   for (const c of [].concat(children)) if (c) node.appendChild(c);
   return node;
-}
-const ms = (name, extraClass = "") => el("span", { class: `ms ${extraClass}`.trim(), text: name });
+};
+const ms = (name, cls = "") => el("span", { class: `ms ${cls}`.trim(), text: name });
 
-function renderNav(t) {
+function renderText() {
+  document.querySelectorAll("[data-t]").forEach(n => { n.textContent = T[n.getAttribute("data-t")]; });
+}
+
+function renderNav() {
   const nav = document.getElementById("mainNav");
-  nav.innerHTML = "";
-  t.nav.forEach(([label, href]) => nav.appendChild(el("a", { href }, el("span", { text: label }))));
+  T.nav.forEach(([label, href]) => nav.appendChild(el("a", { href, text: label })));
 }
 
-function renderFilters(t) {
-  const grid = document.getElementById("filterGrid");
-  grid.querySelectorAll(".filter-field").forEach(n => n.remove());
-  const searchBtn = grid.querySelector(".btn-search");
-  t.filters.forEach(([label, value]) => {
-    const field = el("div", { class: "filter-field" }, [
-      el("label", { text: label }),
-      el("div", { class: "select-fake" }, [el("span", { text: value }), ms("expand_more")])
-    ]);
-    grid.insertBefore(field, searchBtn);
-  });
+function renderWhy() {
+  const grid = document.getElementById("whyGrid");
+  T.why.forEach(([icon, text]) => grid.appendChild(el("div", { class: "why-item" }, [ms(icon), el("span", { text })])));
 }
 
-function machineCard(t, m) {
-  const photo = m.img
-    ? el("div", { class: "machine-photo" }, el("img", { src: m.img, alt: m.model, loading: "lazy" }))
-    : el("div", { class: "machine-photo placeholder" }, [ms("photo_camera"), el("span", { class: "label", text: t.photoSoon })]);
-  photo.appendChild(el("div", { class: "machine-tag", style: `background:${m.tagBg}` }, el("span", { text: m.tag })));
-
-  const specs = el("div", { class: "machine-specs" }, m.specs.map(([icon, value]) =>
-    el("div", { class: "spec" }, [ms(icon), el("span", { text: value })])
-  ));
-
-  return el("div", { class: "machine-card" }, [
-    photo,
-    el("div", { class: "machine-body" }, [
-      el("div", { class: "machine-brand", text: m.brand }),
-      el("div", { class: "machine-model", text: m.model }),
-      specs,
-      el("div", { class: "spacer1" }),
-      el("div", { class: "machine-foot" }, [
-        el("div", {}, [el("div", { class: "price-label", text: t.priceFrom }), el("div", { class: "price-value", text: m.price })]),
-        el("a", { class: "btn-enquire", href: "#contact" }, el("span", { text: t.enquire }))
-      ])
-    ])
-  ]);
-}
-
-function renderMachines(t) {
-  const grid = document.getElementById("machineGrid");
-  grid.innerHTML = "";
-  t.machines.forEach(m => grid.appendChild(machineCard(t, m)));
-}
-
-function renderCategories(t) {
+function renderCategories() {
   const grid = document.getElementById("catGrid");
-  grid.innerHTML = "";
-  t.categories.forEach(([icon, name, count]) => {
-    grid.appendChild(el("a", { class: "cat-card", href: "#stock" }, [
-      ms(icon, "icon"),
-      el("div", { style: "flex:1;" }, [
-        el("div", { class: "cat-name", text: name }),
-        el("div", { class: "cat-count", text: count })
-      ]),
-      ms(t.arrowIcon, "arrow")
+  T.categories.forEach(([icon, name, desc, uses]) => {
+    grid.appendChild(el("article", { class: "cat-card" }, [
+      el("div", { class: "cat-icon" }, ms(icon)),
+      el("h3", { class: "cat-name", text: name }),
+      el("p", { class: "cat-desc", text: desc }),
+      el("div", { class: "cat-uses" }, [
+        el("span", { class: "uses-label", text: T.usesLabel }),
+        el("span", { text: uses })
+      ])
     ]));
   });
 }
 
-function renderServices(t) {
+function renderTasks() {
+  const body = document.getElementById("taskRows");
+  T.tasks.forEach(([task, path]) => {
+    body.appendChild(el("tr", {}, [
+      el("td", { class: "task-cell", text: task }),
+      el("td", { text: path })
+    ]));
+  });
+}
+
+function renderSectors() {
+  const grid = document.getElementById("sectorGrid");
+  T.sectors.forEach(([icon, name, desc]) => {
+    grid.appendChild(el("article", { class: "sector-card" }, [
+      ms(icon, "sector-icon"),
+      el("div", { class: "sector-name", text: name }),
+      el("p", { class: "sector-desc", text: desc })
+    ]));
+  });
+}
+
+function renderServices() {
   const grid = document.getElementById("serviceGrid");
-  grid.innerHTML = "";
-  t.services.forEach(([icon, name, desc]) => {
-    grid.appendChild(el("div", { class: "service-card" }, [
+  T.services.forEach(([icon, name, desc]) => {
+    grid.appendChild(el("article", { class: "service-card" }, [
       el("div", { class: "service-icon" }, ms(icon)),
       el("div", { class: "service-name", text: name }),
-      el("div", { class: "service-desc", text: desc })
+      el("p", { class: "service-desc", text: desc })
     ]));
   });
 }
 
-function renderStats(t) {
-  const row = document.getElementById("statsRow");
-  row.innerHTML = "";
-  t.stats.forEach(([value, label]) => {
-    row.appendChild(el("div", {}, [el("div", { class: "stat-value", text: value }), el("div", { class: "stat-label", text: label })]));
-  });
+function renderChecks() {
+  const grid = document.getElementById("checkGrid");
+  T.checks.forEach(text => grid.appendChild(el("div", { class: "check-item" }, [ms("check_circle"), el("span", { text })])));
 }
 
-function renderTeam(t) {
-  const grid = document.getElementById("teamGrid");
-  grid.innerHTML = "";
-  t.team.forEach(([name, role, phone, initial]) => {
-    grid.appendChild(el("div", { class: "team-card" }, [
-      el("div", { class: "team-avatar", text: initial }),
-      el("div", { style: "min-width:0;" }, [
-        el("div", { class: "team-name", text: name }),
-        el("div", { class: "team-role", text: role }),
-        el("div", { class: "team-phone" }, [ms("call"), el("span", { text: phone })])
-      ])
-    ]));
-  });
-}
-
-function renderContactLines(t) {
+function renderContactLines() {
   const box = document.getElementById("contactLines");
-  box.innerHTML = "";
-  t.contactLines.forEach(([icon, value]) => {
-    box.appendChild(el("div", { class: "contact-line" }, [ms(icon), el("span", { text: value })]));
+  T.contactLines.forEach(([icon, label, value, href]) => {
+    const isLtr = /^[+\d]/.test(value) || value.includes("@");
+    const val = el(href ? "a" : "span", { href, class: isLtr ? "ltr" : null, text: value });
+    box.appendChild(el("div", { class: "contact-line" }, [
+      ms(icon),
+      el("span", { class: "cl-body" }, [el("span", { class: "cl-label", text: label }), val])
+    ]));
   });
 }
 
-function renderForm(t) {
+function renderForm() {
   const grid = document.getElementById("formGrid");
-  grid.querySelectorAll(".form-field").forEach(n => n.remove());
   const messageField = document.getElementById("messageField");
-  t.formFields.forEach(([label, ph, span]) => {
-    const field = el("div", { class: "form-field", style: `grid-column:${span};` }, [
-      el("label", { text: label }),
-      el("input", { placeholder: ph })
-    ]);
-    grid.insertBefore(field, messageField);
+  T.formFields.forEach(([name, label, ph, span]) => {
+    grid.insertBefore(el("div", { class: "form-field", style: `grid-column:${span};` }, [
+      el("label", { for: "f-" + name, text: label }),
+      el("input", { id: "f-" + name, name, placeholder: ph, type: name === "email" ? "email" : "text" })
+    ]), messageField);
   });
-  messageField.querySelector("label").textContent = t.fMessage;
-  messageField.querySelector("textarea").placeholder = t.fMessagePh;
+  const ta = messageField.querySelector("textarea");
+  messageField.querySelector("label").textContent = T.fMessage;
+  messageField.querySelector("label").setAttribute("for", "f-message");
+  ta.placeholder = T.fMessagePh;
+  ta.id = "f-message";
+  ta.name = "message";
 }
 
-function renderFooter(t) {
+function buildMessage() {
+  const v = id => (document.getElementById(id)?.value || "").trim();
+  const lines = [
+    "طلب عرض سعر — palift.ps",
+    "",
+    `الاسم: ${v("f-name") || "—"}`,
+    `المنشأة: ${v("f-company") || "—"}`,
+    `الهاتف: ${v("f-phone") || "—"}`,
+    `البريد: ${v("f-email") || "—"}`,
+    `وزن الحمولة: ${v("f-load") || "—"}`,
+    `ارتفاع الرفع: ${v("f-height") || "—"}`,
+    "",
+    "وصف المهمة وموقع العمل:",
+    v("f-message") || "—"
+  ];
+  return lines.join("\n");
+}
+
+function wireForm() {
+  document.getElementById("quoteForm").addEventListener("submit", e => {
+    e.preventDefault();
+    window.open(`https://wa.me/${SALES_WA}?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
+  });
+  document.getElementById("mailBtn").addEventListener("click", () => {
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("طلب عرض سعر — palift.ps")}&body=${encodeURIComponent(buildMessage())}`;
+  });
+  document.getElementById("waFloat").href = `https://wa.me/${SALES_WA}`;
+  document.getElementById("waFloat").target = "_blank";
+}
+
+function renderFooter() {
   const grid = document.getElementById("footerCols");
-  grid.innerHTML = "";
-  t.footerCols.forEach(([title, items]) => {
+  T.footerCols.forEach(([title, items]) => {
     grid.appendChild(el("div", {}, [
       el("div", { class: "footer-col-title", text: title }),
-      el("div", { class: "footer-links" }, items.map(i => el("a", { href: "#stock", text: i })))
+      el("div", { class: "footer-links" }, items.map(([label, href]) => el("a", { href, text: label })))
     ]));
   });
 }
@@ -252,16 +327,12 @@ const heroGallerySrc = ["images/stacker.webp", "images/forklift.webp", "images/p
 let heroIndex = 0;
 let heroTimer = null;
 
-function renderHeroGallery(t) {
+function renderHeroGallery() {
   const gallery = document.getElementById("heroGallery");
   const dots = document.getElementById("heroDots");
-  gallery.innerHTML = "";
-  dots.innerHTML = "";
   heroGallerySrc.forEach((src, i) => {
-    gallery.appendChild(el("img", {
-      src, alt: t.gallery[i], class: i === heroIndex ? "active" : ""
-    }));
-    const dot = el("button", { class: i === heroIndex ? "active" : "", "aria-label": t.gallery[i] });
+    gallery.appendChild(el("img", { src, alt: T.gallery[i], class: i === heroIndex ? "active" : "" }));
+    const dot = el("button", { type: "button", class: i === heroIndex ? "active" : "", "aria-label": T.gallery[i] });
     dot.addEventListener("click", () => setHeroImage(i, true));
     dots.appendChild(dot);
   });
@@ -271,47 +342,25 @@ function setHeroImage(i, userTriggered) {
   heroIndex = i;
   document.querySelectorAll("#heroGallery img").forEach((img, idx) => img.classList.toggle("active", idx === heroIndex));
   document.querySelectorAll("#heroDots button").forEach((d, idx) => d.classList.toggle("active", idx === heroIndex));
-  if (userTriggered) {
-    clearInterval(heroTimer);
-    startHeroRotation();
-  }
+  if (userTriggered) startHeroRotation();
 }
 
 function startHeroRotation() {
   clearInterval(heroTimer);
-  heroTimer = setInterval(() => {
-    setHeroImage((heroIndex + 1) % heroGallerySrc.length, false);
-  }, 4500);
+  heroTimer = setInterval(() => setHeroImage((heroIndex + 1) % heroGallerySrc.length, false), 4500);
 }
 
-function applyLang() {
-  const t = T[lang];
-  document.documentElement.setAttribute("dir", t.dir);
-  document.documentElement.setAttribute("lang", lang);
-  document.querySelectorAll("[data-t]").forEach(node => {
-    node.textContent = t[node.getAttribute("data-t")];
-  });
-  document.getElementById("stockCount").textContent = t.stockCount;
-  document.getElementById("langLabel").textContent = t.langSwitch;
-  document.getElementById("viewAllArrow").textContent = t.arrowIcon;
-  renderHeroGallery(t);
-  renderNav(t);
-  renderFilters(t);
-  renderMachines(t);
-  renderCategories(t);
-  renderServices(t);
-  renderStats(t);
-  renderTeam(t);
-  renderContactLines(t);
-  renderForm(t);
-  renderFooter(t);
-  localStorage.setItem(STORAGE_KEY, lang);
-}
-
-document.getElementById("langToggle").addEventListener("click", () => {
-  lang = lang === "ar" ? "en" : "ar";
-  applyLang();
-});
-
-applyLang();
+renderText();
+renderNav();
+renderWhy();
+renderCategories();
+renderTasks();
+renderSectors();
+renderServices();
+renderChecks();
+renderContactLines();
+renderForm();
+wireForm();
+renderFooter();
+renderHeroGallery();
 startHeroRotation();
