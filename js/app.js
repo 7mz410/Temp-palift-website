@@ -81,3 +81,35 @@
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("طلب عرض سعر — palift.ps")}&body=${encodeURIComponent(message())}`;
   });
 })();
+
+/* فلتر الطرازات في المعرض */
+(function () {
+  const bar = document.getElementById("modelFilters");
+  const grid = document.getElementById("modelGrid");
+  const status = document.getElementById("filterStatus");
+  if (!bar || !grid) return;
+  const tiles = [...grid.querySelectorAll(".model-tile")];
+
+  bar.addEventListener("click", e => {
+    const chip = e.target.closest(".chip.filter");
+    if (!chip) return;
+    const cat = chip.dataset.cat;
+    bar.querySelectorAll(".chip.filter").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    let shown = 0;
+    tiles.forEach(t => {
+      const match = cat === "*" || t.dataset.cat === cat;
+      t.hidden = !match;
+      if (match) shown++;
+    });
+    if (status) status.textContent = shown === 1 ? "طراز واحد" : `${shown} طرازاً`;
+    history.replaceState(null, "", cat === "*" ? location.pathname : "?cat=" + encodeURIComponent(cat));
+  });
+
+  /* يفتح على الفئة المطلوبة إذا كانت في الرابط */
+  const want = new URLSearchParams(location.search).get("cat");
+  if (want) {
+    const chip = bar.querySelector(`.chip.filter[data-cat="${CSS.escape(want)}"]`);
+    if (chip) chip.click();
+  }
+})();

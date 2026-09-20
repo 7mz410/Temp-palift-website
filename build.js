@@ -25,6 +25,7 @@ const NAV = [
   ["الرئيسية", "/", "home"],
   ["من نحن", "/#about", "about"],
   ["المعدات", "/equipment/", "equipment"],
+  ["الطرازات", "/models/", "models"],
   ["الخدمات", "/#services", "services"],
   ["التمويل", "/#financing", "financing"],
   ["تواصل معنا", "/#contact", "contact"]
@@ -316,6 +317,7 @@ function equipmentPage() {
     <div class="cat-grid">
       ${cards}
     </div>
+    <a class="inline-link" href="/models/">${esc(`عرض كل الطرازات (${MODELS.length}) في صفحة واحدة`)}${ms("arrow_back", "il-arrow")}</a>
   </section>
 
   <section id="sectors">
@@ -362,15 +364,55 @@ function equipmentPage() {
   });
 }
 
+/* ---------- معرض كل الطرازات ---------- */
+function galleryPage() {
+  const chips = [`<button type="button" class="chip filter active" data-cat="*">${esc(T.modelFilterAll)}<span class="chip-count">${MODELS.length}</span></button>`]
+    .concat(CATS.filter(c => c.models.length).map(c =>
+      `<button type="button" class="chip filter" data-cat="${esc(c.name)}">${esc(c.name)}<span class="chip-count">${c.models.length}</span></button>`))
+    .join("\n      ");
+
+  const tiles = MODELS.map(m => modelTile(m, true)).join("\n      ");
+
+  const body = `
+  <section class="page-head">
+    <div class="kicker"><span class="bar"></span><span>${esc(T.kickerModels)}</span></div>
+    <h1>${esc(T.modelsTitle)}</h1>
+    <p class="section-lead">${esc(T.modelsLead)}</p>
+  </section>
+
+  <section id="gallery">
+    <div class="filter-bar" id="modelFilters">
+      ${chips}
+    </div>
+    <p class="filter-status" id="filterStatus" role="status">${esc(`${MODELS.length} طرازاً`)}</p>
+    <div class="model-grid" id="modelGrid">
+      ${tiles}
+    </div>
+    <div class="cta-row">
+      <a class="btn-primary" href="/#contact">${esc(T.getQuote)}</a>
+      <a class="btn-outline" href="/equipment/">${esc("تصفّح حسب الفئة")}</a>
+    </div>
+  </section>
+`;
+  return layout({
+    title: `الطرازات | ${SITE}`,
+    desc: `كل طرازات Noblelift المتوفرة لدى PALIFT (${MODELS.length} طرازاً) مع المواصفات وسعة الحمل وارتفاع الرفع ونوع البطارية.`,
+    active: "models",
+    breadcrumb: crumbs([["الرئيسية", "/"], ["الطرازات"]]),
+    body
+  });
+}
+
 /* ---------- كرت طراز مختصر ---------- */
-function modelTile(m) {
+function modelTile(m, showCat) {
   const hi = m.highlights.map(([l, v]) =>
     `<div class="mh"><div class="mh-value">${esc(v)}</div><div class="mh-label">${esc(l)}</div></div>`).join("");
-  return `<article class="model-tile">
+  return `<article class="model-tile" data-cat="${esc(m.cat)}">
         <a class="model-tile-photo" href="${modelUrl(m)}">
           <img src="${img(m)}" alt="${esc(m.name)} — ${esc(m.code)}" loading="lazy">
         </a>
         <div class="model-tile-body">
+          ${showCat ? `<a class="tile-cat" href="${catByName[m.cat].url}">${esc(m.cat)}</a>` : ""}
           <h3 class="model-name"><a href="${modelUrl(m)}">${esc(m.name)}</a></h3>
           <div class="model-code"><span class="code-label">${esc(T.modelNoLabel)}: </span><span class="ltr">${esc(m.code)}</span></div>
           <p class="model-tagline">${esc(m.tagline)}</p>
@@ -522,10 +564,11 @@ function write(file, html) {
 let n = 0;
 write("index.html", homePage()); n++;
 write("equipment/index.html", equipmentPage()); n++;
+write("models/index.html", galleryPage()); n++;
 CATS.forEach(c => { write(`equipment/${c.slug}/index.html`, categoryPage(c)); n++; });
 MODELS.forEach(m => { write(`models/${slug(m.code)}/index.html`, modelPage(m)); n++; });
 
-const urls = ["/", "/equipment/"]
+const urls = ["/", "/equipment/", "/models/"]
   .concat(CATS.map(c => c.url))
   .concat(MODELS.map(modelUrl));
 write("sitemap.txt", urls.map(u => "https://palift.ps" + u).join("\n") + "\n");
