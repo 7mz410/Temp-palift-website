@@ -71,7 +71,12 @@ function modelCard(m) {
     ])
   ]);
 
+  const photo = m.img
+    ? el("div", { class: "model-photo" }, el("img", { src: m.img, alt: `${m.name} — ${m.code}`, loading: "lazy" }))
+    : null;
+
   return el("article", { class: "model-card", "data-cat": m.cat }, [
+    photo,
     el("div", { class: "model-head" }, [
       el("div", { class: "model-cat", text: m.cat }),
       el("h3", { class: "model-name", text: m.name }),
