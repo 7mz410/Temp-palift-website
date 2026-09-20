@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PALIFT | حلول المناولة والرفع والتخزين</title>
-<meta name="description" content="PALIFT Equipment Trading Co. — الوكيل الحصري لعلامة Noblelift في فلسطين. رافعات شوكية، مكدسات وناقلات طبالي، منصات عمل، آلات تنظيف وأنظمة رفوف، مع خدمات ما بعد البيع.">
+<title>PALIFT | نضع معايير جديدة في عالم الرفع</title>
+<meta name="description" content="PALIFT Equipment Trading Co. — الوكيل الرسمي لعلامة Noblelift في فلسطين. رافعات شوكية كهربائية، جكات كهربائية ويدوية، ريتش تراك، رافعات مقص وآلات تنظيف أرضيات، مع خدمات ما بعد البيع وحلول التمويل.">
 <link rel="icon" href="brand/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +68,7 @@
       </div>
     </div>
     <div class="about-grid">
-      <p class="about-body" data-t="aboutBody"></p>
+      <div class="about-body" data-t="aboutBody"></div>
       <div class="vm-grid">
         <div class="vm-card">
           <span class="ms">visibility</span>
@@ -99,22 +99,20 @@
     <div class="cat-grid" id="catGrid"></div>
   </section>
 
-  <section id="solutions">
+  <section id="models">
     <div class="section-head">
       <div>
-        <div class="kicker"><span class="bar"></span><span data-t="kickerTasks"></span></div>
-        <h2 data-t="tasksTitle"></h2>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerModels"></span></div>
+        <h2 data-t="modelsTitle"></h2>
       </div>
     </div>
-    <p class="section-lead" data-t="tasksLead"></p>
-    <div class="table-card">
-      <table class="pf-table">
-        <thead><tr><th data-t="thTask"></th><th data-t="thPath"></th></tr></thead>
-        <tbody id="taskRows"></tbody>
-      </table>
-    </div>
+    <p class="section-lead" data-t="modelsLead"></p>
+    <div class="filter-bar" id="modelFilters"></div>
+    <div class="model-grid" id="modelGrid"></div>
+  </section>
 
-    <div class="section-head sectors-head">
+  <section id="sectors">
+    <div class="section-head">
       <div>
         <div class="kicker"><span class="bar"></span><span data-t="kickerSectors"></span></div>
         <h2 data-t="sectorsTitle"></h2>
@@ -133,6 +131,17 @@
       </div>
       <p class="section-lead" data-t="servicesLead"></p>
       <div class="services-grid" id="serviceGrid"></div>
+    </div>
+  </section>
+
+  <section id="financing">
+    <div class="financing-inner">
+      <div>
+        <div class="kicker"><span class="bar"></span><span data-t="kickerFinancing"></span></div>
+        <h2 data-t="financingTitle"></h2>
+        <p class="section-lead" data-t="financingBody"></p>
+        <a href="#contact" class="btn-primary financing-cta"><span data-t="financingCta"></span></a>
+      </div>
       <div class="notice">
         <span class="ms">info</span>
         <div>
@@ -209,6 +218,8 @@
 
   <a class="wa-float" id="waFloat" href="#" aria-label="واتساب"><span class="ms">chat</span></a>
 
+<script src="js/content.js"></script>
+<script src="js/models.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
