@@ -12,8 +12,8 @@ const catSlug = en => en.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replac
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const ms = (n, c = "") => `<span class="ms${c ? " " + c : ""}" aria-hidden="true">${n}</span>`;
 
-const CATS = T.categories.map(([icon, name, en, desc, uses]) => ({
-  icon, name, en, desc, uses, slug: catSlug(en),
+const CATS = T.categories.map(([icon, name, en, desc, uses, photo]) => ({
+  icon, name, en, desc, uses, photo: "/" + photo, slug: catSlug(en),
   url: `/equipment/${catSlug(en)}/`,
   models: MODELS.filter(m => m.cat === name)
 }));
@@ -284,7 +284,10 @@ function homePage() {
 /* ---------- صفحة المعدات ---------- */
 function equipmentPage() {
   const cards = CATS.map(c => `<a class="cat-card" href="${c.url}">
-        <div class="cat-icon">${ms(c.icon)}</div>
+        <div class="cat-photo">
+          <img src="${c.photo}" alt="${esc(c.name)}" loading="lazy">
+          <span class="cat-icon">${ms(c.icon)}</span>
+        </div>
         <h2 class="cat-name">${esc(c.name)}</h2>
         <div class="cat-en">${esc(c.en)}</div>
         <p class="cat-desc">${esc(c.desc)}</p>
@@ -394,12 +397,17 @@ function categoryPage(c) {
     `<a class="chip" href="${x.url}">${esc(x.name)}</a>`).join("\n      ");
 
   const body = `
-  <section class="page-head">
-    <div class="kicker"><span class="bar"></span><span>${esc(T.kickerProducts)}</span></div>
-    <h1>${esc(c.name)}</h1>
-    <div class="page-head-en">${esc(c.en)}</div>
-    <p class="section-lead">${esc(c.desc)}</p>
-    <div class="uses-band">${ms("checklist")}<span><strong>${esc(T.usesLabel)}</strong> ${esc(c.uses)}</span></div>
+  <section class="page-head cat-head">
+    <div class="cat-head-grid">
+      <div>
+        <div class="kicker"><span class="bar"></span><span>${esc(T.kickerProducts)}</span></div>
+        <h1>${esc(c.name)}</h1>
+        <div class="page-head-en">${esc(c.en)}</div>
+        <p class="section-lead">${esc(c.desc)}</p>
+        <div class="uses-band">${ms("checklist")}<span><strong>${esc(T.usesLabel)}</strong> ${esc(c.uses)}</span></div>
+      </div>
+      <div class="cat-head-photo"><img src="${c.photo}" alt="${esc(c.name)}"></div>
+    </div>
   </section>
 
   <section id="models">
