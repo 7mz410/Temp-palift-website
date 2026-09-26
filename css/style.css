@@ -527,3 +527,24 @@ button.chip{font-family:'Cairo',sans-serif;cursor:pointer;gap:8px;}
   .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;}
   .hero-dots button{width:26px;}
 }
+
+/* noblelift page */
+.brand-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.brand-stat{
+  background:#f7f6f3;border:1px solid #ece9e4;border-radius:10px;
+  padding:22px 20px;text-align:center;
+}
+.bs-icon{display:block;font-size:24px;color:var(--red);margin-bottom:10px;}
+.bs-value{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:30px;color:var(--dark);direction:ltr;}
+.bs-label{font-size:13px;color:var(--body);line-height:1.7;margin-top:8px;}
+.brand-text p + p{margin-top:16px;}
+.brand-text p{color:var(--body);font-size:15.5px;line-height:2;}
+.local-band{
+  display:flex;gap:16px;align-items:flex-start;margin-top:46px;
+  background:var(--dark);border-radius:12px;padding:30px 32px;
+}
+.local-band .ms{font-size:26px;color:var(--red);flex-shrink:0;}
+.local-band .notice-title{color:#fff;font-size:19px;margin-bottom:10px;}
+.local-band p{color:#b4b1ab;font-size:15px;line-height:2;}
+@media (max-width:1000px){ .brand-stats-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:640px){ .brand-stats-grid{grid-template-columns:1fr;} .local-band{padding:24px;} }

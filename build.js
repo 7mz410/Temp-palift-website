@@ -619,6 +619,14 @@ function nobleliftPage() {
   const cats = CATS.filter(c => c.models.length).map(c =>
     `<a class="chip" href="${c.url}">${esc(c.name)}<span class="chip-count">${c.models.length}</span></a>`).join("\n      ");
 
+  const stats = n.stats.map(([icon, value, label]) => `<div class="brand-stat">
+        ${ms(icon, "bs-icon")}
+        <div class="bs-value">${esc(value)}</div>
+        <div class="bs-label">${esc(label)}</div>
+      </div>`).join("\n      ");
+
+  const paras = n.body.map(t => `<p>${esc(t)}</p>`).join("\n          ");
+
   const body = `
   <section class="page-head">
     <div class="kicker"><span class="bar"></span><span>${esc(n.kicker)}</span></div>
@@ -627,20 +635,37 @@ function nobleliftPage() {
     <p class="section-lead brand-lead">${esc(n.lead)}</p>
   </section>
 
+  <section id="brand-stats">
+    <div class="brand-stats-grid">
+      ${stats}
+    </div>
+  </section>
+
   <section id="brand-body">
     <div class="brand-grid">
       <div>
-        <p class="model-desc">${esc(n.body)}</p>
-        <div class="empty-note brand-pending">${ms("schedule")}
-          <div><p>${esc(n.pending)}</p></div>
+        <h2 class="small-head">${esc("نبذة عن Noblelift")}</h2>
+        <div class="brand-text">
+          ${paras}
         </div>
-        <h2 class="small-head mt">${esc("الفئات المتوفرة لدى PALIFT")}</h2>
-        <div class="chip-row">
-          ${cats}
-        </div>
+        <a class="inline-link" href="${n.siteUrl}" target="_blank" rel="noopener">${esc(n.siteLabel)}${ms("open_in_new", "il-arrow")}</a>
       </div>
       <div class="brand-photo"><img src="${HERO[0].src}" alt="${esc("أسطول معدات Noblelift")}" loading="lazy"></div>
     </div>
+
+    <div class="local-band">
+      ${ms("location_on")}
+      <div>
+        <h2 class="notice-title">${esc(n.localTitle)}</h2>
+        <p>${esc(n.localBody)}</p>
+      </div>
+    </div>
+
+    <h2 class="small-head mt">${esc("الفئات المتوفرة لدى PALIFT")}</h2>
+    <div class="chip-row">
+      ${cats}
+    </div>
+
     <div class="cta-row">
       <a class="btn-primary" href="/models/">${esc("استعرض الطرازات")}</a>
       <a class="btn-outline" href="/#contact">${esc(T.getQuote)}</a>
@@ -649,7 +674,7 @@ function nobleliftPage() {
 `;
   return layout({
     title: `Noblelift | ${SITE}`,
-    desc: `${n.lead} ${n.body}`,
+    desc: `${n.lead} ${n.body[0]}`,
     active: "",
     breadcrumb: crumbs([["الرئيسية", "/"], [n.title]]),
     body
