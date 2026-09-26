@@ -628,11 +628,14 @@ function nobleliftPage() {
   const paras = n.body.map(t => `<p>${esc(t)}</p>`).join("\n          ");
 
   const body = `
-  <section class="page-head">
-    <div class="kicker"><span class="bar"></span><span>${esc(n.kicker)}</span></div>
-    <div class="brand-mark">${inlineNoblelift()}</div>
-    <h1 class="visually-hidden">${esc(n.title)}</h1>
-    <p class="section-lead brand-lead">${esc(n.lead)}</p>
+  <section class="brand-hero">
+    <img src="/images/hero/noblelift-hq.webp" alt="مقر Noblelift" class="brand-hero-img">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap brand-hero-content">
+      <div class="kicker light"><span class="bar"></span><span>${esc(n.kicker)}</span></div>
+      <h1 class="brand-h1">${esc(n.title)}</h1>
+      <p class="brand-lead">${esc(n.lead)}</p>
+    </div>
   </section>
 
   <section id="brand-stats">
@@ -642,15 +645,12 @@ function nobleliftPage() {
   </section>
 
   <section id="brand-body">
-    <div class="brand-grid">
-      <div>
-        <h2 class="small-head">${esc("نبذة عن Noblelift")}</h2>
-        <div class="brand-text">
-          ${paras}
-        </div>
-        <a class="inline-link" href="${n.siteUrl}" target="_blank" rel="noopener">${esc(n.siteLabel)}${ms("open_in_new", "il-arrow")}</a>
+    <div class="brand-about">
+      <h2 class="small-head">${esc("نبذة عن Noblelift")}</h2>
+      <div class="brand-text">
+        ${paras}
       </div>
-      <div class="brand-photo"><img src="${HERO[0].src}" alt="${esc("أسطول معدات Noblelift")}" loading="lazy"></div>
+      <a class="inline-link" href="${n.siteUrl}" target="_blank" rel="noopener">${esc(n.siteLabel)}${ms("open_in_new", "il-arrow")}</a>
     </div>
 
     <div class="local-band">
