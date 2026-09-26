@@ -1,15 +1,16 @@
 https://palift.ps/
 https://palift.ps/equipment/
 https://palift.ps/models/
+https://palift.ps/noblelift/
 https://palift.ps/equipment/electric-forklift/
-https://palift.ps/equipment/diesel-forklift/
-https://palift.ps/equipment/rough-terrain-forklift/
 https://palift.ps/equipment/reach-truck/
 https://palift.ps/equipment/electric-stacker/
 https://palift.ps/equipment/electric-pallet-truck/
 https://palift.ps/equipment/manual-pallet-truck/
 https://palift.ps/equipment/scissor-lift/
 https://palift.ps/equipment/scrubber/
+https://palift.ps/equipment/diesel-forklift/
+https://palift.ps/equipment/rough-terrain-forklift/
 https://palift.ps/models/pwb150-200-300/
 https://palift.ps/models/pte15-20qa/
 https://palift.ps/models/pte12-15-20n/
@@ -27,7 +28,7 @@ https://palift.ps/models/fe3d-16-20n1/
 https://palift.ps/models/cpd20-38/
 https://palift.ps/models/cpd40-55/
 https://palift.ps/models/cpd80-100/
-https://palift.ps/models/fe4p20-35gh/
+https://palift.ps/models/fe4p25-38gh/
 https://palift.ps/models/fep16-20g/
 https://palift.ps/models/fep20-35np/
 https://palift.ps/models/fep40-50np/

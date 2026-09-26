@@ -19,20 +19,20 @@
   });
 })();
 
-/* معرض الصور في الهيرو */
+/* سلايدر صور الغلاف */
 (function () {
-  const gallery = document.getElementById("heroGallery");
+  const wrap = document.getElementById("heroSlides");
   const dots = document.getElementById("heroDots");
-  if (!gallery || !dots) return;
-  const imgs = [...gallery.querySelectorAll("img")];
-  if (imgs.length < 2) return;
+  if (!wrap || !dots) return;
+  const slides = [...wrap.querySelectorAll(".hero-slide")];
+  if (slides.length < 2) return;
 
   let i = 0, timer = null;
-  imgs.forEach((img, idx) => {
+  slides.forEach((slide, idx) => {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = idx === 0 ? "active" : "";
-    dot.setAttribute("aria-label", img.alt || `صورة ${idx + 1}`);
+    dot.setAttribute("aria-label", slide.alt || `صورة ${idx + 1}`);
     dot.addEventListener("click", () => { show(idx); start(); });
     dots.appendChild(dot);
   });
@@ -40,13 +40,13 @@
 
   function show(n) {
     i = n;
-    imgs.forEach((img, idx) => img.classList.toggle("active", idx === i));
+    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
     buttons.forEach((b, idx) => b.classList.toggle("active", idx === i));
   }
   function start() {
     clearInterval(timer);
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    timer = setInterval(() => show((i + 1) % imgs.length), 4500);
+    timer = setInterval(() => show((i + 1) % slides.length), 6000);
   }
   start();
 })();

@@ -15,20 +15,67 @@ const ms = (n, c = "") => `<span class="ms${c ? " " + c : ""}" aria-hidden="true
 const CATS = T.categories.map(([icon, name, en, desc, uses, photo]) => ({
   icon, name, en, desc, uses, photo: "/" + photo, slug: catSlug(en),
   url: `/equipment/${catSlug(en)}/`,
-  models: MODELS.filter(m => m.cat === name)
+  models: MODELS.filter(m => m.cat === name).sort((a, b) => (a.rank || 99) - (b.rank || 99))
 }));
 const catByName = Object.fromEntries(CATS.map(c => [c.name, c]));
+const FEATURED_CODES = ["FE4P25-38GH", "RT16/20 Pro", "PTE15/20N Pro"];
+
 const modelUrl = m => `/models/${slug(m.code)}/`;
 const img = m => "/" + m.img;
 
+const FEATURED = FEATURED_CODES.map(c => {
+  const m = MODELS.find(x => x.code === c);
+  if (!m) throw new Error("featured model not found: " + c);
+  return m;
+});
+
 const NAV = [
   ["الرئيسية", "/", "home"],
-  ["من نحن", "/#about", "about"],
   ["المعدات", "/equipment/", "equipment"],
-  ["الطرازات", "/models/", "models"],
+  ["من نحن", "/#about", "about"],
   ["الخدمات", "/#services", "services"],
   ["التمويل", "/#financing", "financing"],
   ["تواصل معنا", "/#contact", "contact"]
+];
+
+/* أيقونة لكل نوع مواصفة في خانات الكروت */
+function specIcon(label) {
+  if (/سعة الحمل|سعة المنصة|الحمولة/.test(label)) return "fitness_center";
+  if (/ارتفاع/.test(label)) return "height";
+  if (/البطارية/.test(label)) return "battery_charging_full";
+  if (/المحركات/.test(label)) return "settings";
+  if (/عرض التنظيف/.test(label)) return "straighten";
+  if (/الخزان/.test(label)) return "water_drop";
+  return "info";
+}
+
+function highlightChips(m) {
+  return m.highlights.map(([label, value]) => `<div class="mh">
+            ${ms(specIcon(label), "mh-icon")}
+            <div class="mh-value">${esc(value)}</div>
+            <div class="mh-label">${esc(label)}</div>
+          </div>`).join("\n          ");
+}
+
+const svgCache = {};
+const inlineSvg = name => (svgCache[name] ||= fs.readFileSync(`brand/social-${name}.svg`, "utf8").trim());
+
+function socialLinks() {
+  if (!T.social || !T.social.length) return "";
+  return `<div class="social-row">
+        <span class="social-title">${esc(T.socialTitle)}</span>
+        ${T.social.map(([icon, label, href]) =>
+          `<a class="social-link" href="${href}" target="_blank" rel="noopener" aria-label="${esc(label)}">${inlineSvg(icon)}</a>`).join("")}
+      </div>`;
+}
+
+const HERO = [
+  { src: "/images/hero/cover-1.webp", alt: "أسطول رافعات شوكية Noblelift" },
+  { src: "/images/hero/cover-2.webp", alt: "ريتش تراك داخل مستودع" },
+  { src: "/images/hero/cover-3.webp", alt: "منصات رفع مقصية" },
+  { src: "/images/hero/cover-4.webp", alt: "مكدسات كهربائية" },
+  { src: "/images/hero/cover-5.webp", alt: "رافعات شوكية في الساحة" },
+  { src: "/images/hero/cover-6.webp", alt: "معدات مناولة داخل مستودع" }
 ];
 
 const waLink = text => `https://wa.me/${SALES_WA}?text=${encodeURIComponent(text)}`;
@@ -67,7 +114,8 @@ function layout({ title, desc, active, body, breadcrumb }) {
 
   <header>
     <div class="wrap">
-      <a class="logo-link" href="/"><img class="logo" src="/brand/logo-white.png" alt="${SITE}"></a>
+      <a class="logo-link" href="/"><img class="logo" src="/brand/logo-ar-white.png" alt="${SITE} — بال ليفت للمعدات"></a>
+      <a class="brand-link" href="/noblelift/" aria-label="Noblelift"><img class="brand-logo" src="/brand/noblelift-white.svg" alt="Noblelift" width="120" height="14"></a>
       <nav id="mainNav">
         ${nav}
       </nav>
@@ -81,9 +129,11 @@ ${body}
   <footer>
     <div class="footer-grid">
       <div>
-        <img class="footer-logo" src="/brand/logo-white.png" alt="${SITE}">
+        <img class="footer-logo" src="/brand/logo-ar-white.png" alt="${SITE}">
         <div class="footer-slogan">${esc(T.slogan)}</div>
         <p class="footer-blurb">${esc(T.footerBlurb)}</p>
+        <a class="footer-brand" href="/noblelift/"><img src="/brand/noblelift-white.svg" alt="Noblelift" width="110" height="13"></a>
+        ${socialLinks()}
       </div>
       ${footerCols()}
     </div>
@@ -148,30 +198,21 @@ function homePage() {
   const aboutParas = T.aboutBody.split("\n\n").map(p => `<p>${esc(p)}</p>`).join("\n        ");
 
   const body = `
-  <section id="home">
-    <img class="hero-pattern-red" src="/images/pattern-red.png" alt="">
-    <img class="hero-pattern-gray" src="/images/pattern-gray.png" alt="">
-    <div class="wrap hero-inner">
-      <div class="hero-grid">
-        <div>
-          <span class="hero-badge">${ms("verified")}<span>${esc(T.badge)}</span></span>
-          <h1 class="hero-title">${esc(T.heroTitle)}</h1>
-          <p class="hero-sub">${esc(T.heroSub)}</p>
-          <div class="hero-ctas">
-            <a href="/equipment/" class="btn-primary">${esc(T.ctaBrowse)}</a>
-            <a href="#contact" class="btn-outline">${esc(T.ctaQuote)}</a>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-gallery" id="heroGallery">
-            <img src="/images/models/pte15-20qa.webp" alt="جك كهربائي ATOM" class="active">
-            <img src="/images/models/fe4p20-35gh.webp" alt="رافعة شوكية كهربائية G-Series">
-            <img src="/images/models/rt16-20pro.webp" alt="ريتش تراك RT16/20 Pro">
-          </div>
-          <div class="hero-dots" id="heroDots"></div>
-        </div>
+  <section id="home" class="hero">
+    <div class="hero-slides" id="heroSlides">
+      ${HERO.map((h, i) => `<img src="${h.src}" alt="${esc(h.alt)}" class="hero-slide${i === 0 ? " active" : ""}"${i ? ' loading="lazy"' : ""}>`).join("\n      ")}
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <span class="hero-badge">${ms("verified")}<span>${esc(T.badge)}</span></span>
+      <h1 class="hero-title">${esc(T.heroTitle)}</h1>
+      <p class="hero-sub">${esc(T.heroSub)}</p>
+      <div class="hero-ctas">
+        <a href="/equipment/" class="btn-primary">${esc(T.ctaBrowse)}</a>
+        <a href="#contact" class="btn-ghost">${esc(T.ctaQuote)}</a>
       </div>
     </div>
+    <div class="hero-dots" id="heroDots"></div>
   </section>
 
   <section id="message-strip">
@@ -210,6 +251,25 @@ function homePage() {
       </div>
     </div>
     <a class="inline-link" href="/equipment/">${esc("تصفّح المعدات والطرازات")}${ms("arrow_back", "il-arrow")}</a>
+  </section>
+
+  <section id="featured">
+    <div class="section-head">
+      <div>
+        <div class="kicker"><span class="bar"></span><span>${esc(T.featuredKicker)}</span></div>
+        <h2>${esc(T.featuredTitle)}</h2>
+      </div>
+      <span class="spacer"></span>
+      <a class="view-all" href="/models/">${esc(T.featuredCta)}${ms("arrow_back")}</a>
+    </div>
+    <p class="section-lead">${esc(T.featuredLead)}</p>
+    <div class="model-grid featured-grid">
+      ${FEATURED.map(m => modelTile(m, true)).join("\n      ")}
+    </div>
+    <div class="cta-row">
+      <a class="btn-primary" href="/models/">${esc(T.featuredCta)}</a>
+      <a class="btn-outline" href="/equipment/">${esc("تصفّح حسب الفئة")}</a>
+    </div>
   </section>
 
   <section id="services">
@@ -405,8 +465,7 @@ function galleryPage() {
 
 /* ---------- كرت طراز مختصر ---------- */
 function modelTile(m, showCat) {
-  const hi = m.highlights.map(([l, v]) =>
-    `<div class="mh"><div class="mh-value">${esc(v)}</div><div class="mh-label">${esc(l)}</div></div>`).join("");
+  const hi = highlightChips(m);
   return `<article class="model-tile" data-cat="${esc(m.cat)}">
         <a class="model-tile-photo" href="${modelUrl(m)}">
           <img src="${img(m)}" alt="${esc(m.name)} — ${esc(m.code)}" loading="lazy">
@@ -480,8 +539,7 @@ function categoryPage(c) {
 /* ---------- صفحة طراز ---------- */
 function modelPage(m) {
   const c = catByName[m.cat];
-  const hi = m.highlights.map(([l, v]) =>
-    `<div class="mh"><div class="mh-value">${esc(v)}</div><div class="mh-label">${esc(l)}</div></div>`).join("\n          ");
+  const hi = highlightChips(m);
   const specs = m.specs.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("\n            ");
   const feats = m.features.map(f => `<li>${esc(f)}</li>`).join("\n            ");
   const related = c.models.filter(x => x.code !== m.code).slice(0, 3);
@@ -555,20 +613,71 @@ ${relatedHtml}
   });
 }
 
+/* ---------- صفحة Noblelift ---------- */
+function nobleliftPage() {
+  const n = T.noblelift;
+  const cats = CATS.filter(c => c.models.length).map(c =>
+    `<a class="chip" href="${c.url}">${esc(c.name)}<span class="chip-count">${c.models.length}</span></a>`).join("\n      ");
+
+  const body = `
+  <section class="page-head">
+    <div class="kicker"><span class="bar"></span><span>${esc(n.kicker)}</span></div>
+    <div class="brand-mark">${inlineNoblelift()}</div>
+    <h1 class="visually-hidden">${esc(n.title)}</h1>
+    <p class="section-lead brand-lead">${esc(n.lead)}</p>
+  </section>
+
+  <section id="brand-body">
+    <div class="brand-grid">
+      <div>
+        <p class="model-desc">${esc(n.body)}</p>
+        <div class="empty-note brand-pending">${ms("schedule")}
+          <div><p>${esc(n.pending)}</p></div>
+        </div>
+        <h2 class="small-head mt">${esc("الفئات المتوفرة لدى PALIFT")}</h2>
+        <div class="chip-row">
+          ${cats}
+        </div>
+      </div>
+      <div class="brand-photo"><img src="${HERO[0].src}" alt="${esc("أسطول معدات Noblelift")}" loading="lazy"></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn-primary" href="/models/">${esc("استعرض الطرازات")}</a>
+      <a class="btn-outline" href="/#contact">${esc(T.getQuote)}</a>
+    </div>
+  </section>
+`;
+  return layout({
+    title: `Noblelift | ${SITE}`,
+    desc: `${n.lead} ${n.body}`,
+    active: "",
+    breadcrumb: crumbs([["الرئيسية", "/"], [n.title]]),
+    body
+  });
+}
+
+const inlineNoblelift = () => fs.readFileSync("brand/noblelift-white.svg", "utf8").trim();
+
 /* ---------- الكتابة ---------- */
 function write(file, html) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, html);
 }
 
+/* تنظيف المجلدات المولّدة حتى لا تبقى صفحات قديمة بعد تغيير رقم طراز */
+for (const dir of ["models", "equipment", "noblelift"]) {
+  if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
+}
+
 let n = 0;
 write("index.html", homePage()); n++;
 write("equipment/index.html", equipmentPage()); n++;
 write("models/index.html", galleryPage()); n++;
+write("noblelift/index.html", nobleliftPage()); n++;
 CATS.forEach(c => { write(`equipment/${c.slug}/index.html`, categoryPage(c)); n++; });
 MODELS.forEach(m => { write(`models/${slug(m.code)}/index.html`, modelPage(m)); n++; });
 
-const urls = ["/", "/equipment/", "/models/"]
+const urls = ["/", "/equipment/", "/models/", "/noblelift/"]
   .concat(CATS.map(c => c.url))
   .concat(MODELS.map(modelUrl));
 write("sitemap.txt", urls.map(u => "https://palift.ps" + u).join("\n") + "\n");
