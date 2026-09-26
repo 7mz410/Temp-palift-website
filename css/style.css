@@ -352,6 +352,7 @@ footer{background:var(--dark2);padding:54px 28px 0;}
 
 /* model tiles on a category page */
 .model-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.model-tile[hidden]{display:none !important;}
 .model-tile{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:border-color 200ms ease,box-shadow 200ms ease;}
 .model-tile:hover{border-color:#c9c5be;box-shadow:0 10px 30px rgba(37,37,35,.08);}
 .model-tile-photo{display:flex;align-items:center;justify-content:center;height:240px;background:#fff;border-bottom:1px solid #f0eeea;padding:18px;}
