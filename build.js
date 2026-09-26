@@ -154,6 +154,10 @@ ${body}
         <span>${esc(T.copyright)}</span>
         <span class="spacer"></span>
         <span>${esc(T.addressShort)}</span>
+        <span class="footer-legal">
+          <a href="/terms/">${esc(LEGAL.terms.title)}</a>
+          <a href="/privacy/">${esc(LEGAL.privacy.title)}</a>
+        </span>
       </div>
       <div class="footer-credit">
         ${esc(T.credit[0])}
@@ -700,6 +704,49 @@ function nobleliftPage() {
 
 const inlineNoblelift = () => fs.readFileSync("brand/noblelift-white.svg", "utf8").trim();
 
+/* ---------- الصفحات القانونية ---------- */
+function legalPage(doc, other) {
+  const toc = doc.sections.map((sec, i) =>
+    `<a href="#s${i + 1}">${esc(sec[0])}</a>`).join("\n        ");
+
+  const body = doc.sections.map((sec, i) => `<section class="legal-section" id="s${i + 1}">
+        <h2><span class="legal-num">${i + 1}</span>${esc(sec[0])}</h2>
+        ${sec[1].map(t => `<p>${esc(t)}</p>`).join("\n        ")}
+      </section>`).join("\n\n      ");
+
+  const page = `
+  <section class="page-head">
+    <div class="kicker"><span class="bar"></span><span>${esc(doc.kicker)}</span></div>
+    <h1>${esc(doc.title)}</h1>
+    <p class="legal-updated">${esc(LEGAL.updatedLabel)} ${esc(LEGAL.updated)}</p>
+    <p class="section-lead">${esc(doc.lead)}</p>
+  </section>
+
+  <section class="legal-body">
+    <div class="legal-grid">
+      <nav class="legal-toc" aria-label="محتويات الصفحة">
+        <div class="legal-toc-title">المحتويات</div>
+        ${toc}
+      </nav>
+      <div class="legal-text">
+      ${body}
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn-outline" href="/${other.slug}/">${esc(other.title)}</a>
+      <a class="btn-outline" href="/#contact">${esc("تواصل معنا")}</a>
+    </div>
+  </section>
+`;
+  return layout({
+    title: `${doc.title} | ${SITE}`,
+    desc: doc.lead,
+    active: "",
+    breadcrumb: crumbs([["الرئيسية", "/"], [doc.title]]),
+    body: page
+  });
+}
+
 /* ---------- الكتابة ---------- */
 function write(file, html) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -716,10 +763,12 @@ write("index.html", homePage()); n++;
 write("equipment/index.html", equipmentPage()); n++;
 write("models/index.html", galleryPage()); n++;
 write("noblelift/index.html", nobleliftPage()); n++;
+write("terms/index.html", legalPage(LEGAL.terms, LEGAL.privacy)); n++;
+write("privacy/index.html", legalPage(LEGAL.privacy, LEGAL.terms)); n++;
 CATS.forEach(c => { write(`equipment/${c.slug}/index.html`, categoryPage(c)); n++; });
 MODELS.forEach(m => { write(`models/${slug(m.code)}/index.html`, modelPage(m)); n++; });
 
-const urls = ["/", "/equipment/", "/models/", "/noblelift/"]
+const urls = ["/", "/equipment/", "/models/", "/noblelift/", "/terms/", "/privacy/"]
   .concat(CATS.map(c => c.url))
   .concat(MODELS.map(modelUrl));
 write("sitemap.txt", urls.map(u => "https://palift.ps" + u).join("\n") + "\n");
