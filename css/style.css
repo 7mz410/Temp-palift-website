@@ -39,6 +39,13 @@ h1,h2,h3{font-family:'Josefin Sans','Cairo',sans-serif;font-weight:600;margin:0;
 .topbar .item a{color:#a8a49d;}
 .topbar .item a:hover{color:#fff;}
 .topbar .hours .ms{color:inherit;}
+.topbar-social{display:flex;align-items:center;gap:4px;margin-inline-start:14px;}
+.topbar-social a{
+  width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  color:#a8a49d;transition:color 160ms ease,background 160ms ease;
+}
+.topbar-social a:hover{color:#fff;background:var(--red);}
+.topbar-social svg{width:14px;height:14px;display:block;}
 .spacer{flex:1;}
 
 /* header */
@@ -287,6 +294,7 @@ footer{background:var(--dark2);padding:54px 28px 0;}
   .hero-title{font-size:32px;}
   .section-head h2{font-size:26px;}
   .topbar .hours{display:none;}
+  .topbar-social{margin-inline-start:6px;}
 }
 
 

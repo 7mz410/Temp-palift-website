@@ -60,6 +60,12 @@ function highlightChips(m) {
 const svgCache = {};
 const inlineSvg = name => (svgCache[name] ||= fs.readFileSync(`brand/social-${name}.svg`, "utf8").trim());
 
+function topbarSocial() {
+  if (!T.social || !T.social.length) return "";
+  return `<span class="topbar-social">${T.social.map(([icon, label, href]) =>
+        `<a href="${href}" target="_blank" rel="noopener" aria-label="${esc(label)}">${inlineSvg(icon)}</a>`).join("")}</span>`;
+}
+
 function socialLinks() {
   if (!T.social || !T.social.length) return "";
   return `<div class="social-row">
@@ -109,6 +115,7 @@ function layout({ title, desc, active, body, breadcrumb }) {
       <span class="item">${ms("mail")}<a class="ltr" href="mailto:${EMAIL}">${EMAIL}</a></span>
       <span class="spacer"></span>
       <span class="item hours">${ms("schedule")}<span>${esc(T.hours)}</span></span>
+      ${topbarSocial()}
     </div>
   </div>
 
