@@ -164,6 +164,8 @@ const T = {
   ],
   disclaimer: "تختلف المواصفات والتجهيزات والتوفر والأسعار والكفالة وشروط التمويل وفق الطراز وعرض السعر والاتفاق النهائي. تُعد الوثائق المعتمدة المرجع النهائي للمواصفات والشروط التجارية.",
   copyright: "جميع الحقوق محفوظة © " + new Date().getFullYear() + " — PALIFT Equipment Trading Co.",
+  skipLink: "تخطَّ إلى المحتوى",
+  credit: ["تطوير", "the-247.com", "https://the-247.com", "الذراع التقني لـ", "creative.ps", "https://creative.ps"],
   addressShort: "بيت ساحور، الشارع الرئيسي، بالقرب من سوق الشعب • palift.ps",
 
   social: [

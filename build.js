@@ -109,6 +109,8 @@ function layout({ title, desc, active, body, breadcrumb }) {
 </head>
 <body>
 
+  <a class="skip-link" href="#main">${esc(T.skipLink)}</a>
+
   <div class="topbar">
     <div class="wrap">
       <span class="item">${ms("call")}<a class="ltr" href="tel:+970567888444">${SALES_PHONE}</a></span>
@@ -131,7 +133,9 @@ function layout({ title, desc, active, body, breadcrumb }) {
     </div>
   </header>
 ${breadcrumb || ""}
+  <main id="main">
 ${body}
+  </main>
 
   <footer>
     <div class="footer-grid">
@@ -150,6 +154,12 @@ ${body}
         <span>${esc(T.copyright)}</span>
         <span class="spacer"></span>
         <span>${esc(T.addressShort)}</span>
+      </div>
+      <div class="footer-credit">
+        ${esc(T.credit[0])}
+        <a href="${T.credit[2]}" target="_blank" rel="noopener">${esc(T.credit[1])}</a>
+        — ${esc(T.credit[3])}
+        <a href="${T.credit[5]}" target="_blank" rel="noopener">${esc(T.credit[4])}</a>
       </div>
     </div>
   </footer>
