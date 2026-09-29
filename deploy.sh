@@ -19,9 +19,9 @@ rsync -az --delete \
   --exclude '.well-known' \
   ./ "root@$SERVER:$REMOTE/"
 
-echo "==> فحص سريع"
+echo "==> فحص سريع على الدومين"
 for p in / /equipment/ /models/ /noblelift/ /terms/ /privacy/; do
-  code=$(curl -s -m 15 -o /dev/null -w "%{http_code}" "http://$SERVER:8081$p")
+  code=$(curl -s -m 20 -o /dev/null -w "%{http_code}" --resolve "palift.ps:443:$SERVER" "https://palift.ps$p")
   printf "   %-16s %s\n" "$p" "$code"
 done
 echo "==> تم"

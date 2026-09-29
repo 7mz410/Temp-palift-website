@@ -1,6 +1,6 @@
 // محتوى الموقع — مصدره: Website Content VOL 1 + VOL 5 FINAL + الدليل العربي
 const SALES_PHONE = "056 788 8444";
-const SALES_WA = "970567888444";
+const SALES_WA = "972567888444";
 const AFTERSALES_PHONE = "056 692 2999";
 const EMAIL = "info@palift.ps";
 
@@ -170,7 +170,7 @@ const T = {
 
   social: [
     ["facebook", "فيسبوك", "https://www.facebook.com/Palift2025"],
-    ["whatsapp", "واتساب", "https://wa.me/970567888444"]
+    ["whatsapp", "واتساب", "https://wa.me/972567888444"]
   ],
   socialTitle: "تابعنا",
 

@@ -55,7 +55,7 @@
 (function () {
   const form = document.getElementById("quoteForm");
   if (!form) return;
-  const SALES_WA = "970567888444";
+  const SALES_WA = "972567888444";
   const EMAIL = "info@palift.ps";
   const v = id => (document.getElementById(id)?.value || "").trim();
 
